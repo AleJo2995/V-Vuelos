@@ -1,0 +1,18 @@
+﻿body {
+    font-family: 'Lato';
+    background: #7e7b75;
+    background: -webkit-linear-gradient(to right, #a09d98, #7e7b75, #a09d98); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right,#a09d98, #7e7b75, #a09d98); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+a {
+    color: white !important;
+}
+
+h1, h2, h3, h4, h5, h6, div, span {
+    font-family: 'Lato';
+}
+
+.center-text {
+    text-align: center;
+}
