@@ -219,25 +219,63 @@ namespace BLL
             }
         }
 
-        public bool agregar_vuelos(string accion)
+        public void agregar_vuelos()
         {
             conexion = cls_DAL.trae_conexion("V-Vuelos", ref mensaje_error, ref numero_error);
             if (conexion == null)
             {
                 //insertar en la table de errores
                 HttpContext.Current.Response.Redirect("Error.aspx?error=" + numero_error.ToString() + "&men=" + mensaje_error);
-                return false;
+              
             }
             else
             {
-                if (accion.Equals("Insertar"))
-                {
+               
                     sql = "usp_inserta_vuelo";
+           
+                ParamStruct[] parametros = new ParamStruct[12];
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 0, "@ID_consecutivo", SqlDbType.Int, _id_consecutivo);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 1, "@Codigo", SqlDbType.Int, _codigo);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 2, "@Tipo", SqlDbType.VarChar, _tipo);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 3, "@Aerolinea", SqlDbType.Int, _aerolinea);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 4, "@Aeropuerto", SqlDbType.Int, _aeropuerto);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 5, "@Procedencia", SqlDbType.VarChar, _procedencia);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 6, "@Destino", SqlDbType.VarChar, _destino);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 7, "@Fecha", SqlDbType.Date, _fecha);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 8, "@Hora", SqlDbType.Time, _hora);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 9, "@Estado", SqlDbType.VarChar, _estado);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 10, "@Numero_boletos", SqlDbType.Int, _numero_boletos);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 11, "@Precio", SqlDbType.VarChar, _precio);
+                cls_DAL.conectar(conexion, ref mensaje_error, ref numero_error);
+                cls_DAL.ejecuta_sqlcommand(conexion, sql, true, parametros, ref mensaje_error, ref numero_error);
+                if (numero_error != 0)
+                {
+                    //insertar en la table de errores
+                    HttpContext.Current.Response.Redirect("Error.aspx?error=" + numero_error.ToString() + "&men=" + mensaje_error);
+                    cls_DAL.desconectar(conexion, ref mensaje_error, ref numero_error);
+                  
                 }
                 else
                 {
-                    sql = "usp_modifica_vuelo";
+                    cls_DAL.desconectar(conexion, ref mensaje_error, ref numero_error);
+                  
                 }
+            }
+        }
+
+        public void modifica_vuelos()
+        {
+            conexion = cls_DAL.trae_conexion("V-Vuelos", ref mensaje_error, ref numero_error);
+            if (conexion == null)
+            {
+                //insertar en la table de errores
+                HttpContext.Current.Response.Redirect("Error.aspx?error=" + numero_error.ToString() + "&men=" + mensaje_error);
+             
+            }
+            else
+            {
+                    sql = "usp_modifica_vuelo";
+              
                 ParamStruct[] parametros = new ParamStruct[13];
                 cls_DAL.agregar_datos_estructura_parametros(ref parametros, 0, "@ID", SqlDbType.Int, _id);
                 cls_DAL.agregar_datos_estructura_parametros(ref parametros, 1, "@ID_consecutivo", SqlDbType.Int, _id_consecutivo);
@@ -259,12 +297,12 @@ namespace BLL
                     //insertar en la table de errores
                     HttpContext.Current.Response.Redirect("Error.aspx?error=" + numero_error.ToString() + "&men=" + mensaje_error);
                     cls_DAL.desconectar(conexion, ref mensaje_error, ref numero_error);
-                    return false;
+         
                 }
                 else
                 {
                     cls_DAL.desconectar(conexion, ref mensaje_error, ref numero_error);
-                    return true;
+                 
                 }
             }
         }

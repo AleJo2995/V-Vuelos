@@ -17,15 +17,18 @@ namespace VVuelos
         protected void btn_guardar_Click(object sender, EventArgs e)
         {
             BLL.Consecutivo consecutivo = new BLL.Consecutivo();
+            consecutivo.consecutivo = Int32.Parse(txt_consecutivo.Text);
             consecutivo.descripcion = ddl_descripcion.Text;
             consecutivo.prefijo = txt_prefijo.Text;
             consecutivo.rango_final = Int32.Parse(txt_rango_fin.Text);
             consecutivo.rango_inicial = Int32.Parse(txt_rango_ini.Text);
-            consecutivo.agregar_consecutivos("Insertar");
+            consecutivo.agregar_consecutivos();
         }
 
         protected void btn_cancelar_Click(object sender, EventArgs e)
         {
+
+            Response.Redirect("Default.aspx");
 
         }
     }

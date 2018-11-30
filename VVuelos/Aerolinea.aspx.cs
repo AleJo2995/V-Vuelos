@@ -9,10 +9,8 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 using BLL;
-using System.Drawing;
 
-namespace VVuelos
-{
+
     public partial class Aerolinea : System.Web.UI.Page
     {
 
@@ -23,7 +21,7 @@ namespace VVuelos
 
             if (!Page.IsPostBack)
             {
-                Lista_aerolineas();
+                this.Lista_aerolineas();
             }
 
         }
@@ -33,6 +31,8 @@ namespace VVuelos
             BLL.Aerolinea aerolinea = new BLL.Aerolinea();
             GV_Aerolinea.DataSource = aerolinea.carga_aerolineas().Tables[0];
             GV_Aerolinea.DataBind();
+           
+            
         }
         protected void GV_Aerolinea_RowDataBound(object sender, GridViewRowEventArgs e)
         {
@@ -47,7 +47,7 @@ namespace VVuelos
         protected void GV_Aerolinea_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             GV_Aerolinea.PageIndex = e.NewPageIndex;
-            Lista_aerolineas();
+            this.Lista_aerolineas();
         }
     
         protected void GV_Aerolinea_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -59,7 +59,7 @@ namespace VVuelos
                 int ID = Convert.ToInt32(GV_Aerolinea.DataKeys[fila].Value);
                 if (aerolinea.eliminar_aerolinea(ID))
                 {
-                     Lista_aerolineas();
+                    this.Lista_aerolineas();
                 }
             }
 
@@ -68,8 +68,7 @@ namespace VVuelos
 
         protected void btn_nuevo_Click(object sender, EventArgs e)
         {
-
-        }
+        Response.Redirect("AdministrarAerolineas.aspx");
+    }
     }
    
-}

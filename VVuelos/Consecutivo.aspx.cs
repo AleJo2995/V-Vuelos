@@ -12,7 +12,10 @@ using BLL;
 
 namespace VVuelos
 {
+    
     public partial class Consecutivo : System.Web.UI.Page
+
+       
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -33,20 +36,20 @@ namespace VVuelos
         }
 
 
-        /// <summary>
-        /// Ligando los consecutivos al gridview
-        /// </summary>
+
         private void Traer_Consecutivos()
         {
-            BLL.Consecutivo consecutivo = new BLL.Consecutivo();
+           
+        BLL.Consecutivo consecutivo = new BLL.Consecutivo();
             MC_Consecutivo.DataSource = consecutivo.lista_consecutivos().Tables[0];
             MC_Consecutivo.DataBind();
+            
         }
 
         protected void MC_Consecutivo_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             MC_Consecutivo.PageIndex = e.NewPageIndex;
         }
-        
+
     }
 }

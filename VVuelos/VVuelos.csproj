@@ -154,6 +154,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="AdministrarAerolineas.aspx" />
     <Content Include="Aerolinea.aspx" />
     <Content Include="bin\Antlr3.Runtime.dll" />
     <Content Include="bin\Antlr3.Runtime.pdb" />
@@ -250,8 +251,10 @@
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Login.aspx" />
     <Content Include="NuevoConsecutivo.aspx" />
+    <Content Include="PagoBoletos.aspx" />
     <Content Include="Paises.aspx" />
     <Content Include="Puertas.aspx" />
+    <Content Include="RecuperarContraseña.aspx" />
     <Content Include="Salidas.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -295,6 +298,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdministrarAerolineas.aspx.cs">
+      <DependentUpon>AdministrarAerolineas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdministrarAerolineas.aspx.designer.cs">
+      <DependentUpon>AdministrarAerolineas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Aerolinea.aspx.cs">
       <DependentUpon>Aerolinea.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -384,6 +394,13 @@
     <Compile Include="NuevoConsecutivo.aspx.designer.cs">
       <DependentUpon>NuevoConsecutivo.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PagoBoletos.aspx.cs">
+      <DependentUpon>PagoBoletos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PagoBoletos.aspx.designer.cs">
+      <DependentUpon>PagoBoletos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Paises.aspx.cs">
       <DependentUpon>Paises.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -398,6 +415,13 @@
     </Compile>
     <Compile Include="Puertas.aspx.designer.cs">
       <DependentUpon>Puertas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RecuperarContraseña.aspx.cs">
+      <DependentUpon>RecuperarContraseña.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RecuperarContraseña.aspx.designer.cs">
+      <DependentUpon>RecuperarContraseña.aspx</DependentUpon>
     </Compile>
     <Compile Include="Salidas.aspx.cs">
       <DependentUpon>Salidas.aspx</DependentUpon>
