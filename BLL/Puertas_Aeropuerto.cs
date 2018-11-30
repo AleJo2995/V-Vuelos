@@ -173,25 +173,59 @@ namespace BLL
             }
         }
 
-        public bool agregar_puertas(string accion)
+        public void agregar_puertas()
         {
             conexion = cls_DAL.trae_conexion("V-Vuelos", ref mensaje_error, ref numero_error);
             if (conexion == null)
             {
                 //insertar en la table de errores
                 HttpContext.Current.Response.Redirect("Error.aspx?error=" + numero_error.ToString() + "&men=" + mensaje_error);
-                return false;
+            
             }
             else
             {
-                if (accion.Equals("Insertar"))
-                {
                     sql = "usp_inserta_puerta";
+              
+              
+                ParamStruct[] parametros = new ParamStruct[7];
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 0, "@ID_Consecutivo", SqlDbType.Int, _id_consecutivo);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 1, "@Aeropuerto", SqlDbType.Int, _aeropuerto);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 2, "@Codigo_puerta", SqlDbType.Int, _codigo_puerta);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 3, "@Codigo_aerolinea", SqlDbType.Int, _codigo_aerolinea);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 4, "@Numero_puerta", SqlDbType.Int, _numero_puerta);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 5, "@Tipo_puerta", SqlDbType.VarChar, _tipo_puerta);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 6, "@Condicion_puerta", SqlDbType.VarChar, _condicion_puerta);
+                cls_DAL.conectar(conexion, ref mensaje_error, ref numero_error);
+                cls_DAL.ejecuta_sqlcommand(conexion, sql, true, parametros, ref mensaje_error, ref numero_error);
+                if (numero_error != 0)
+                {
+                    //insertar en la table de errores
+                    HttpContext.Current.Response.Redirect("Error.aspx?error=" + numero_error.ToString() + "&men=" + mensaje_error);
+                    cls_DAL.desconectar(conexion, ref mensaje_error, ref numero_error);
+                  
                 }
                 else
                 {
-                    sql = "usp_modifica_puerta";
+                    cls_DAL.desconectar(conexion, ref mensaje_error, ref numero_error);
+                  
                 }
+            }
+        }
+
+
+        public void modifica_puertas()
+        {
+            conexion = cls_DAL.trae_conexion("V-Vuelos", ref mensaje_error, ref numero_error);
+            if (conexion == null)
+            {
+                //insertar en la table de errores
+                HttpContext.Current.Response.Redirect("Error.aspx?error=" + numero_error.ToString() + "&men=" + mensaje_error);
+            
+            }
+            else
+            {
+                    sql = "usp_modifica_puerta";
+               
                 ParamStruct[] parametros = new ParamStruct[8];
                 cls_DAL.agregar_datos_estructura_parametros(ref parametros, 0, "@ID", SqlDbType.Int, _id);
                 cls_DAL.agregar_datos_estructura_parametros(ref parametros, 1, "@ID_Consecutivo", SqlDbType.Int, _id_consecutivo);
@@ -208,12 +242,12 @@ namespace BLL
                     //insertar en la table de errores
                     HttpContext.Current.Response.Redirect("Error.aspx?error=" + numero_error.ToString() + "&men=" + mensaje_error);
                     cls_DAL.desconectar(conexion, ref mensaje_error, ref numero_error);
-                    return false;
+                  
                 }
                 else
                 {
                     cls_DAL.desconectar(conexion, ref mensaje_error, ref numero_error);
-                    return true;
+                 
                 }
             }
         }

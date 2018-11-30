@@ -2,10 +2,13 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-    
-
-    <div class="row">
-        
+    <div class="jumbotron">
+        <h1>Bienvenido a VVuelos</h1>
+        <p class="lead"></p>
+       
     </div>
+
+   
+        
 
 </asp:Content>

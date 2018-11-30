@@ -12,6 +12,7 @@ namespace BLL
     public class Aerolinea
     {
         #region propiedades
+
         private int _id;
 
         public int id

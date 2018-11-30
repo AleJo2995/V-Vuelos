@@ -166,25 +166,57 @@ namespace BLL
             }
         }
 
-        public bool agregar_bitacora(string accion)
+        public void agregar_bitacora()
         {
             conexion = cls_DAL.trae_conexion("V-Vuelos", ref mensaje_error, ref numero_error);
             if (conexion == null)
             {
                 //insertar en la table de errores
                 HttpContext.Current.Response.Redirect("Error.aspx?error=" + numero_error.ToString() + "&men=" + mensaje_error);
-                return false;
+              
             }
             else
             {
-                if (accion.Equals("Insertar"))
-                {
                     sql = "usp_inserta_bitacora";
+              
+                ParamStruct[] parametros = new ParamStruct[6];
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 0, "@Usuario", SqlDbType.VarChar, _usuario);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 1, "@Fecha_Hora", SqlDbType.DateTime, _fecha_hora);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 2, "@Codigo_registro", SqlDbType.Int, _codigo_registro);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 3, "@Tipo", SqlDbType.VarChar, _tipo);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 4, "@Descripcion", SqlDbType.VarChar, _descripcion);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 5, "@Detalle", SqlDbType.VarChar, _detalle);
+                cls_DAL.conectar(conexion, ref mensaje_error, ref numero_error);
+                cls_DAL.ejecuta_sqlcommand(conexion, sql, true, parametros, ref mensaje_error, ref numero_error);
+                if (numero_error != 0)
+                {
+                    //insertar en la table de errores
+                    HttpContext.Current.Response.Redirect("Error.aspx?error=" + numero_error.ToString() + "&men=" + mensaje_error);
+                    cls_DAL.desconectar(conexion, ref mensaje_error, ref numero_error);
+                 
                 }
                 else
                 {
-                    sql = "usp_modifica_bitacora";
+                    cls_DAL.desconectar(conexion, ref mensaje_error, ref numero_error);
+                 
                 }
+            }
+        }
+
+        public void modifica_bitacora()
+        {
+            conexion = cls_DAL.trae_conexion("V-Vuelos", ref mensaje_error, ref numero_error);
+            if (conexion == null)
+            {
+                //insertar en la table de errores
+                HttpContext.Current.Response.Redirect("Error.aspx?error=" + numero_error.ToString() + "&men=" + mensaje_error);
+             
+            }
+            else
+            {
+      
+                    sql = "usp_modifica_bitacora";
+               
                 ParamStruct[] parametros = new ParamStruct[7];
                 cls_DAL.agregar_datos_estructura_parametros(ref parametros, 0, "@ID", SqlDbType.Int, _id);
                 cls_DAL.agregar_datos_estructura_parametros(ref parametros, 1, "@Usuario", SqlDbType.VarChar, _usuario);
@@ -200,12 +232,12 @@ namespace BLL
                     //insertar en la table de errores
                     HttpContext.Current.Response.Redirect("Error.aspx?error=" + numero_error.ToString() + "&men=" + mensaje_error);
                     cls_DAL.desconectar(conexion, ref mensaje_error, ref numero_error);
-                    return false;
+               
                 }
                 else
                 {
                     cls_DAL.desconectar(conexion, ref mensaje_error, ref numero_error);
-                    return true;
+                  
                 }
             }
         }

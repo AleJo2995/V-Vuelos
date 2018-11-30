@@ -3,6 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head runat="server">
+
+    <script src='https://www.google.com/recaptcha/api.js?render=6Lc_sn0UAAAAALc0NcX2JmWoZcxHabh617hJ0WMl'></script>
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 body {font-family: Arial, Helvetica, sans-serif;}
@@ -56,6 +59,10 @@ span.psw {
     padding-top: 16px;
 }
 
+span.crt {
+    float: left;
+    padding-top: 16px;
+}
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
     span.psw {
@@ -67,10 +74,24 @@ span.psw {
     }
 }
 </style>
+
+    
+
 </head>
 <body>
 
-<h2>Login Form - Sebas</h2>
+    
+          <script>
+grecaptcha.ready(function() {
+grecaptcha.execute('6Lc_sn0UAAAAALc0NcX2JmWoZcxHabh617hJ0WMl', {action: 'action_name'})
+.then(function(token) {
+// Verify the token on the server.
+});
+});
+</script>
+          >
+        
+<h2>VVuelos</h2>
 
 <form id="form1" runat="server">
 
@@ -81,22 +102,15 @@ span.psw {
   </div>
 
   <div class="container">
-         <asp:Login ID="Login1" runat="server"
-DestinationPageUrl="~/Default.aspx" BackColor="#F7F6F3" BorderColor="#E6E2D8" BorderPadding="4"
-            BorderStyle="Solid" BorderWidth="1px" DisplayRememberMe="False" Font-Names="Verdana"
-            Font-Size="0.8em" ForeColor="#333333" LoginButtonText="Ingresar" PasswordLabelText="Contrasena"
-            TitleText="Ingresar al sistema" UserNameLabelText="Usuario">
-            <TextBoxStyle Font-Size="0.8em" />
-            <LoginButtonStyle BackColor="#FFFBFF" BorderColor="#CCCCCC" BorderStyle="Solid" BorderWidth="1px"
-                Font-Names="Verdana" Font-Size="0.8em" ForeColor="#284775" />
-            <InstructionTextStyle Font-Italic="True" ForeColor="Black" />
-            <TitleTextStyle BackColor="#5D7B9D" Font-Bold="True" Font-Size="0.9em" ForeColor="White" />
-        </asp:Login>
+    
+      <asp:Login ID="Login1" runat="server" DisplayRememberMe="False" Width="1002px" DestinationPageUrl="~/Default.aspx">
+      </asp:Login>
+    
   </div>
 
   <div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="cancelbtn">Cancel</button>
-    <span class="psw">Forgot <a href="#">password?</a></span>
+     <span class="crt"><a href="/CrearUsuario.aspx">Crear usuario</a></span>
+           <span class="psw"><a href="/RecuperarContraseña.aspx">¿Olvidó la contraseña?</a></span>
   </div>
 </form>
 

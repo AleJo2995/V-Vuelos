@@ -156,25 +156,56 @@ namespace BLL
             }
         }
 
-        public bool agregar_reservacion(string accion)
+        public void agregar_reservacion()
         {
             conexion = cls_DAL.trae_conexion("V-Vuelos", ref mensaje_error, ref numero_error);
             if (conexion == null)
             {
                 //insertar en la table de errores
                 HttpContext.Current.Response.Redirect("Error.aspx?error=" + numero_error.ToString() + "&men=" + mensaje_error);
-                return false;
+              
             }
             else
             {
-                if (accion.Equals("Insertar"))
-                {
+             
                     sql = "usp_inserta_reservacion";
+            
+                ParamStruct[] parametros = new ParamStruct[5];
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 0, "@ID_Consecutivo", SqlDbType.Int, _id_consecutivo);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 1, "@Usuario", SqlDbType.Int, _usuario);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 2, "@Booking_id", SqlDbType.Int, _booking_id);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 3, "@Vuelo", SqlDbType.Int, _vuelo);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 4, "@Cantidad_boletos", SqlDbType.Int, _cantidad_boletos);
+                cls_DAL.conectar(conexion, ref mensaje_error, ref numero_error);
+                cls_DAL.ejecuta_sqlcommand(conexion, sql, true, parametros, ref mensaje_error, ref numero_error);
+                if (numero_error != 0)
+                {
+                    //insertar en la table de errores
+                    HttpContext.Current.Response.Redirect("Error.aspx?error=" + numero_error.ToString() + "&men=" + mensaje_error);
+                    cls_DAL.desconectar(conexion, ref mensaje_error, ref numero_error);
+                   
                 }
                 else
                 {
-                    sql = "usp_modifica_reservacion";
+                    cls_DAL.desconectar(conexion, ref mensaje_error, ref numero_error);
+                  
                 }
+            }
+        }
+
+        public void modifica_reservacion()
+        {
+            conexion = cls_DAL.trae_conexion("V-Vuelos", ref mensaje_error, ref numero_error);
+            if (conexion == null)
+            {
+                //insertar en la table de errores
+                HttpContext.Current.Response.Redirect("Error.aspx?error=" + numero_error.ToString() + "&men=" + mensaje_error);
+            
+            }
+            else
+            {
+                    sql = "usp_modifica_reservacion";
+             
                 ParamStruct[] parametros = new ParamStruct[6];
                 cls_DAL.agregar_datos_estructura_parametros(ref parametros, 0, "@ID", SqlDbType.Int, _id);
                 cls_DAL.agregar_datos_estructura_parametros(ref parametros, 1, "@ID_Consecutivo", SqlDbType.Int, _id_consecutivo);
@@ -189,12 +220,12 @@ namespace BLL
                     //insertar en la table de errores
                     HttpContext.Current.Response.Redirect("Error.aspx?error=" + numero_error.ToString() + "&men=" + mensaje_error);
                     cls_DAL.desconectar(conexion, ref mensaje_error, ref numero_error);
-                    return false;
+                   
                 }
                 else
                 {
                     cls_DAL.desconectar(conexion, ref mensaje_error, ref numero_error);
-                    return true;
+                   
                 }
             }
         }

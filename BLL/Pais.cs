@@ -146,25 +146,56 @@ namespace BLL
             }
         }
 
-        public bool agregar_paises(string accion)
+        public void agregar_paises()
         {
             conexion = cls_DAL.trae_conexion("V-Vuelos", ref mensaje_error, ref numero_error);
             if (conexion == null)
             {
                 //insertar en la table de errores
                 HttpContext.Current.Response.Redirect("Error.aspx?error=" + numero_error.ToString() + "&men=" + mensaje_error);
-                return false;
+             
             }
             else
             {
-                if (accion.Equals("Insertar"))
-                {
+                
                     sql = "usp_inserta_pais";
+             
+                ParamStruct[] parametros = new ParamStruct[4];
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 0, "@ID_consecutivo", SqlDbType.Int, _id_consecutivo);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 1, "@Codigo", SqlDbType.Int, _codigo);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 2, "@Nombre", SqlDbType.Int, _nombre);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 3, "@Direccion", SqlDbType.Int, _direccion);
+                cls_DAL.conectar(conexion, ref mensaje_error, ref numero_error);
+                cls_DAL.ejecuta_sqlcommand(conexion, sql, true, parametros, ref mensaje_error, ref numero_error);
+                if (numero_error != 0)
+                {
+                    //insertar en la table de errores
+                    HttpContext.Current.Response.Redirect("Error.aspx?error=" + numero_error.ToString() + "&men=" + mensaje_error);
+                    cls_DAL.desconectar(conexion, ref mensaje_error, ref numero_error);
+                    
                 }
                 else
                 {
-                    sql = "usp_modifica_pais";
+                    cls_DAL.desconectar(conexion, ref mensaje_error, ref numero_error);
+                    
                 }
+            }
+        }
+
+        public void modifica_paises()
+        {
+            conexion = cls_DAL.trae_conexion("V-Vuelos", ref mensaje_error, ref numero_error);
+            if (conexion == null)
+            {
+                //insertar en la table de errores
+                HttpContext.Current.Response.Redirect("Error.aspx?error=" + numero_error.ToString() + "&men=" + mensaje_error);
+                
+            }
+            else
+            {
+             
+                    sql = "usp_modifica_pais";
+              
                 ParamStruct[] parametros = new ParamStruct[5];
                 cls_DAL.agregar_datos_estructura_parametros(ref parametros, 0, "@ID", SqlDbType.Int, _id);
                 cls_DAL.agregar_datos_estructura_parametros(ref parametros, 1, "@ID_consecutivo", SqlDbType.Int, _id_consecutivo);
@@ -178,15 +209,16 @@ namespace BLL
                     //insertar en la table de errores
                     HttpContext.Current.Response.Redirect("Error.aspx?error=" + numero_error.ToString() + "&men=" + mensaje_error);
                     cls_DAL.desconectar(conexion, ref mensaje_error, ref numero_error);
-                    return false;
+                
                 }
                 else
                 {
                     cls_DAL.desconectar(conexion, ref mensaje_error, ref numero_error);
-                    return true;
+              
                 }
             }
         }
+
 
         public bool eliminar_pais(int ID)
         {

@@ -32,12 +32,12 @@
         }
 
         .auto-style4 {
-            width: 465px;
-            height: 198px;
+            width: 353px;
+            height: 114px;
         }
 
         .areanavegacion {
-            background-image: url('http://localhost:3066/Imagenes/');
+            background-image: url('http://localhost:3066/Imagenes/Nav.png');
             color: white;
         }
 
@@ -51,35 +51,25 @@
         }
 
         .auto-style9 {
-            width: 317px;
+            width: 395px;
             height: 100px;
-        }
-        .auto-style10 {
-            width: 235px;
         }
     </style>
 
 </head>
 <body>
     <form runat="server">
-        <p>
+       
             &nbsp;
             <table class="auto-style7">
                 <tr>
-                    <td class="auto-style9">&nbsp;</td>
-                    <td class="auto-style10" rowspan="2"><a>
-                        <img alt="VVuelos" class="auto-style4" src="Imagenes/avion.png" /></a>VVUELOS</td>
+                    <td class="auto-style9"><a>
+                        <img alt="VVuelos" class="auto-style4" src="Imagenes/Banner.jpg" /></a></td>
+                    <td class="auto-style8" rowspan="2">&nbsp;</td>
                     <td class="auto-style8">
-                        <asp:Label ID="Label2" runat="server" Text="Bienvenido"></asp:Label>
+                        <asp:Label ID="Label2" runat="server" Text="Usuario:"></asp:Label>
                         <br />
                         <asp:LoginName ID="LoginName2" runat="server" />
-                        <br />
-                        <br />
-                        <asp:LoginStatus ID="LoginStatus1" runat="server" 
-                        LoginText="Sign In" 
-                        LogoutText="Cerrar Sesión" 
-                        LogoutPageUrl="~/Login.aspx" 
-                        LogoutAction="Redirect"/>
                     </td>
                 </tr>
                 <tr>
@@ -89,11 +79,10 @@
                         <div id="google_translate_element"></div>
 
                     </td>
-                    <td>
-                        &nbsp;</td>
+                    <td class="auto-style8"><a href="Login.aspx">Salir</a></td>
                 </tr>
             </table>
-        </p>
+     
 
         <script type="text/javascript">
             function googleTranslateElementInit() {
@@ -127,9 +116,9 @@
         <div class="container body-content">
             <table class="fixed">
                 <tr>
-                    <td class="areanavegacion" colspan="2">Usted está en:
+                    <td class="areanavegacion" colspan="2">Usted esta en:
                         <asp:SiteMapPath ID="SiteMapPath1" runat="server" Font-Names="Verdana" Font-Size="0.8em"
-                            PathSeparator=" > ">
+                            PathSeparator=" : ">
                             <PathSeparatorStyle Font-Bold="True" ForeColor="#5D7B9D" />
                             <CurrentNodeStyle ForeColor="#333333" />
                             <NodeStyle Font-Bold="True" ForeColor="#7C6F57" />

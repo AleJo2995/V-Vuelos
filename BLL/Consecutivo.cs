@@ -20,6 +20,14 @@ namespace BLL
             set { _id = value; }
         }
 
+        private int _consecutivo;
+
+        public int consecutivo
+        {
+            get { return _consecutivo; }
+            set { _consecutivo = value; }
+        }
+
         private string _descripcion;
 
         public string descripcion
@@ -129,6 +137,7 @@ namespace BLL
                     if (ds.Tables[0].Rows.Count > 0)
                     {
                         _id = Convert.ToInt32(ds.Tables[0].Rows[0]["ID"]);
+                        _consecutivo = Convert.ToInt32(ds.Tables[0].Rows[0]["Consecutivo"]);
                         _descripcion = ds.Tables[0].Rows[0]["Descripcion"].ToString();
                         _prefijo = ds.Tables[0].Rows[0]["Prefijo"].ToString();
                         _rango_inicial = Convert.ToInt32(ds.Tables[0].Rows[0]["Rango_inicial"]);
@@ -144,27 +153,21 @@ namespace BLL
             }
         }
 
-        public bool agregar_consecutivos(string accion)
+        public void agregar_consecutivos()
         {
             conexion = cls_DAL.trae_conexion("V-Vuelos", ref mensaje_error, ref numero_error);
             if (conexion == null)
             {
                 //insertar en la table de errores
                 HttpContext.Current.Response.Redirect("Error.aspx?error=" + numero_error.ToString() + "&men=" + mensaje_error);
-                return false;
+               
             }
             else
             {
-                if (accion.Equals("Insertar"))
-                {
                     sql = "usp_inserta_consecutivo";
-                }
-                else
-                {
-                    sql = "usp_modifica_consecutivo";
-                }
+              
                 ParamStruct[] parametros = new ParamStruct[5];
-                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 0, "@ID", SqlDbType.Int, _id);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 0, "@Consecutivo", SqlDbType.Int, _consecutivo);
                 cls_DAL.agregar_datos_estructura_parametros(ref parametros, 1, "@Descripcion", SqlDbType.VarChar, _descripcion);
                 cls_DAL.agregar_datos_estructura_parametros(ref parametros, 2, "@Prefijo", SqlDbType.VarChar, _prefijo);
                 cls_DAL.agregar_datos_estructura_parametros(ref parametros, 3, "@Rango_inicial", SqlDbType.Int, _rango_inicial);
@@ -176,17 +179,55 @@ namespace BLL
                     //insertar en la table de errores
                     HttpContext.Current.Response.Redirect("Error.aspx?error=" + numero_error.ToString() + "&men=" + mensaje_error);
                     cls_DAL.desconectar(conexion, ref mensaje_error, ref numero_error);
-                    return false;
+                 
                 }
                 else
                 {
                     cls_DAL.desconectar(conexion, ref mensaje_error, ref numero_error);
-                    return true;
+                    
                 }
             }
         }
 
-        
+        public void modifica_consecutivos()
+        {
+            conexion = cls_DAL.trae_conexion("V-Vuelos", ref mensaje_error, ref numero_error);
+            if (conexion == null)
+            {
+                //insertar en la table de errores
+                HttpContext.Current.Response.Redirect("Error.aspx?error=" + numero_error.ToString() + "&men=" + mensaje_error);
+               
+            }
+            else
+            {
+                    sql = "usp_modifica_consecutivo";
+               
+             
+                ParamStruct[] parametros = new ParamStruct[6];
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 0, "@ID", SqlDbType.Int, _id);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 1, "@Consecutivo", SqlDbType.Int, _consecutivo);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 2, "@Descripcion", SqlDbType.VarChar, _descripcion);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 3, "@Prefijo", SqlDbType.VarChar, _prefijo);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 4, "@Rango_inicial", SqlDbType.Int, _rango_inicial);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 5, "@Rango_final", SqlDbType.Int, _rango_final);
+                cls_DAL.conectar(conexion, ref mensaje_error, ref numero_error);
+                cls_DAL.ejecuta_sqlcommand(conexion, sql, true, parametros, ref mensaje_error, ref numero_error);
+                if (numero_error != 0)
+                {
+                    //insertar en la table de errores
+                    HttpContext.Current.Response.Redirect("Error.aspx?error=" + numero_error.ToString() + "&men=" + mensaje_error);
+                    cls_DAL.desconectar(conexion, ref mensaje_error, ref numero_error);
+                  
+                }
+                else
+                {
+                    cls_DAL.desconectar(conexion, ref mensaje_error, ref numero_error);
+                
+                }
+            }
+        }
+
+
         #endregion
     }
 }

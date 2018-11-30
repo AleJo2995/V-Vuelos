@@ -22,48 +22,12 @@ namespace VVuelos {
         protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
-        /// Control txt_contraseña.
+        /// Control ChangePassword1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_contraseña;
-        
-        /// <summary>
-        /// Control txt_nuevaContraseña.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_nuevaContraseña;
-        
-        /// <summary>
-        /// Control txt_confirmarContraseña.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_confirmarContraseña;
-        
-        /// <summary>
-        /// Control btn_cambiarContraseña.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_cambiarContraseña;
-        
-        /// <summary>
-        /// Control btn_Cancelar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_Cancelar;
+        protected global::System.Web.UI.WebControls.ChangePassword ChangePassword1;
     }
 }

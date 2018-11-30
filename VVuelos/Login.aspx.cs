@@ -8,6 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
+
 using System.Data.SqlClient;
 
 namespace VVuelos
@@ -18,7 +19,12 @@ namespace VVuelos
         {
 
         }
+<<<<<<< HEAD
+
+  
+=======
         //asdasdasdasdas esta vara se ve feaaaaaaaaaaaaaaaaaaaaaaaaa
 
+>>>>>>> master
     }
 }
