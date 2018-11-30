@@ -11,7 +11,7 @@ namespace BLL
 {
     public class Consecutivo
     {
-        #region propiedades
+        #region propiedadess
         private int _id;
 
         public int id
