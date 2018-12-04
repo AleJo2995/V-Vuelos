@@ -2,7 +2,7 @@
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
   <siteMapNode url="~/Default" title="Inicio"  description="Inicio" >
     <siteMapNode url="" title="Seguridad" description="Seguridad" roles="Administrador, Seguridad">
-      <siteMapNode url="~/Usuarios" title="Usuarios" description="Usuarios">
+      <siteMapNode url="" title="Usuarios" description="Usuarios">
         <siteMapNode url="~/CrearUsuario.aspx" title="Crear Usuarios" description="Crear Usuarios" />
         <siteMapNode url="~/VerUsuario.aspx" title="Asignar Roles" description="Asignar Roles" />
         <siteMapNode url="~/CambiarContraseña.aspx" title="Cambiar Contraseña" description="Cambiar Contraseña" />
@@ -12,12 +12,12 @@
     <siteMapNode url="" title="Administración" description="Administración" roles="Administrador, Mantenimiento">
       <siteMapNode url="~/NuevoConsecutivo.aspx" title="Consecutivos" description="Consecutivos" />
       <siteMapNode url="~/Paises.aspx" title="Países" description="Países" />
-      <siteMapNode url="~/AdministrarAerolineas.aspx" title="Agregar Aerolinea" description="Agregar Aerolínea" />
+      <siteMapNode url="~/NuevaAerolinea.aspx" title="Agregar Aerolinea" description="Agregar Aerolínea" />
     </siteMapNode>
     <siteMapNode url="" title="Consultas" description="Consultas" roles="Administrador, Consulta ">
       <siteMapNode url="~/Bitacora.aspx" title="Bitácora" description="Bitácora" />
       <siteMapNode url="~/Aerolinea.aspx" title="Aerolíneas" description="Aerolíneas" />
-      <siteMapNode url="~/Puertass.aspx" title="Puertas" description="Puertas" />
+      <siteMapNode url="~/Puertas.aspx" title="Puertas" description="Puertas" />
     </siteMapNode>
 
     

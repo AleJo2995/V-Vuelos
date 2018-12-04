@@ -19,12 +19,7 @@ namespace VVuelos
         {
 
         }
-<<<<<<< HEAD
 
   
-=======
-        //asdasdasdasdas esta vara se ve feaaaaaaaaaaaaaaaaaaaaaaaaa
-
->>>>>>> master
     }
 }

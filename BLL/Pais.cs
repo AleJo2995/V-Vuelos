@@ -176,6 +176,13 @@ namespace BLL
                 }
                 else
                 {
+                    Bitacora bitacora = new Bitacora();
+                    bitacora.usuario = System.Web.HttpContext.Current.User.Identity.Name;
+                    bitacora.codigo_registro = 1;
+                    bitacora.tipo = "Agregar";
+                    bitacora.descripcion = "Se insertó un nuevo elemento en la tabla Paises";
+                    bitacora.detalle = "Datos insertados: : Consecutivo" + id_consecutivo + " Codigo: " + codigo + " Nombre: " + nombre + " Dirección: " + direccion;
+                    bitacora.agregar_bitacora();
                     cls_DAL.desconectar(conexion, ref mensaje_error, ref numero_error);
                     
                 }
@@ -213,6 +220,7 @@ namespace BLL
                 }
                 else
                 {
+
                     cls_DAL.desconectar(conexion, ref mensaje_error, ref numero_error);
               
                 }

@@ -6,6 +6,9 @@
         <Columns>
             <asp:BoundField DataField="Codigo" HeaderText="Código" SortExpression="Codigo" />
             <asp:BoundField DataField="nombre" HeaderText="Nombre" SortExpression="nombre" />
+            <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" />
+              <asp:HyperLinkField Text="Editar" DataNavigateUrlFields="ID" DataNavigateUrlFormatString="NuevaAerolinea.aspx?cod={0}" />
+              <asp:ButtonField Text="Eliminar" CommandName="Eliminar" />
         </Columns>
         <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
         <HeaderStyle BackColor="#000084" Font-Bold="True" ForeColor="White" />
