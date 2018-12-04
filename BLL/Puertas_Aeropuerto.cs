@@ -206,6 +206,13 @@ namespace BLL
                 }
                 else
                 {
+                    Bitacora bitacora = new Bitacora();
+                    bitacora.usuario = System.Web.HttpContext.Current.User.Identity.Name;
+                    bitacora.codigo_registro = 1;
+                    bitacora.tipo = "Agregar";
+                    bitacora.descripcion = "Se insertó un nuevo elemento en la tabla Puertas_Aeropuerto";
+                    bitacora.detalle = "Datos insertados: Consecutivo: " + id_consecutivo + " Aeropuerto: " + aeropuerto + " Código de Puerta: " + codigo_puerta + " Codigo de Aerolínea: " + codigo_aerolinea+ " Número de puerta: "+ numero_puerta+ " Tipo Puerta: "+ tipo_puerta+ " Condición de puerta: "+condicion_puerta;
+                    bitacora.agregar_bitacora();
                     cls_DAL.desconectar(conexion, ref mensaje_error, ref numero_error);
                   
                 }

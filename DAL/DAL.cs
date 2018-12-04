@@ -232,7 +232,9 @@ namespace DAL
         /// <param name="es_procedimiento_almacenado">indica si se ejecuta un procedimiento almacenado</param>
         /// <param name="parametros">lista de parametros que necesita el procedimiento almacenado o sentencia SQL para su ejecucion</param>
         /// <param name="mensaje_error">mensaje de error</param>
-        /// <param name="numero_error">numero de error</param>        
+        /// <param name="numero_error">numero de error</param>  
+        /// 
+
         public static void ejecuta_sqlcommand(SqlConnection conexion, string sql, bool es_procedimiento_almacenado, ParamStruct[] parametros, ref string mensaje_error, ref int numero_error)
         {
             SqlCommand sql_command;

@@ -154,7 +154,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
-    <Content Include="AdministrarAerolineas.aspx" />
+    <Content Include="NuevaAerolinea.aspx" />
     <Content Include="Aerolinea.aspx" />
     <Content Include="bin\Antlr3.Runtime.dll" />
     <Content Include="bin\Antlr3.Runtime.pdb" />
@@ -298,12 +298,12 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdministrarAerolineas.aspx.cs">
-      <DependentUpon>AdministrarAerolineas.aspx</DependentUpon>
+    <Compile Include="NuevaAerolinea.aspx.cs">
+      <DependentUpon>NuevaAerolinea.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AdministrarAerolineas.aspx.designer.cs">
-      <DependentUpon>AdministrarAerolineas.aspx</DependentUpon>
+    <Compile Include="NuevaAerolinea.aspx.designer.cs">
+      <DependentUpon>NuevaAerolinea.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aerolinea.aspx.cs">
       <DependentUpon>Aerolinea.aspx</DependentUpon>

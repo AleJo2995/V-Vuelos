@@ -9,7 +9,8 @@
             </tr>
             <tr>
                 <td style="height: 1px; background-color: #f7f6f3;" align="center">
-                    &nbsp;</td>
+                    <asp:Label ID="lbl_error" runat="server" Text="Label"></asp:Label>
+                </td>
             </tr>
             <tr>
                 <td style="width: 100px; height: 1px; background-color: #f7f6f3;" align="center" valign="top">

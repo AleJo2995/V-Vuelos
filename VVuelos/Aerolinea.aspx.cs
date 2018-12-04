@@ -14,8 +14,6 @@ using BLL;
     public partial class Aerolinea : System.Web.UI.Page
     {
 
-  
-
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -39,9 +37,9 @@ using BLL;
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 
-                LinkButton db = (LinkButton)e.Row.Cells[4].Controls[0];
+                LinkButton db = (LinkButton)e.Row.Cells[3].Controls[0];
                 string nombre = e.Row.Cells[1].Text;
-                db.OnClientClick = string.Format("return confirm('¿Desea eliminar la planta seleccionada: {0}?');", nombre);
+                db.OnClientClick = string.Format("return confirm('Confima eliminar esta aerolínea: {0}?');", nombre);
             }
         }
         protected void GV_Aerolinea_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -52,15 +50,20 @@ using BLL;
     
         protected void GV_Aerolinea_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            BLL.Aerolinea aerolinea = new BLL.Aerolinea();
+      
+        BLL.Aerolinea aerolinea = new BLL.Aerolinea();
             if (e.CommandName == "Eliminar")
-            {
-                int fila = Convert.ToInt32(e.CommandArgument);
+        {
+            
+
+            int fila = Convert.ToInt32(e.CommandArgument);
                 int ID = Convert.ToInt32(GV_Aerolinea.DataKeys[fila].Value);
                 if (aerolinea.eliminar_aerolinea(ID))
                 {
                     this.Lista_aerolineas();
-                }
+               
+            }
+          
             }
 
 
@@ -68,7 +71,7 @@ using BLL;
 
         protected void btn_nuevo_Click(object sender, EventArgs e)
         {
-        Response.Redirect("AdministrarAerolineas.aspx");
+        Response.Redirect("NuevaAerolinea.aspx?cod=0");
     }
     }
    
