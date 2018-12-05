@@ -30,13 +30,6 @@ namespace VVuelos
             Response.Redirect("NuevoConsecutivo.aspx");
         }
 
-        private void Editar_Consecutivo(object sender, EventArgs e)
-        {
-
-        }
-
-
-
         private void Traer_Consecutivos()
         {
            

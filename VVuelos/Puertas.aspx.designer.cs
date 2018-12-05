@@ -13,12 +13,12 @@ namespace VVuelos {
     public partial class Puertas {
         
         /// <summary>
-        /// Control GridView1.
+        /// Control MC_Puertas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.GridView MC_Puertas;
     }
 }

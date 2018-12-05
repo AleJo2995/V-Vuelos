@@ -134,7 +134,7 @@ namespace BLL
                         _id_consecutivo = Convert.ToInt32(ds.Tables[0].Rows[0]["ID_consecutivo"]);
                         _codigo = Convert.ToInt32(ds.Tables[0].Rows[0]["Codigo"]);
                         _nombre = ds.Tables[0].Rows[0]["Nombre"].ToString();
-                        _direccion = ds.Tables[0].Rows[0]["Direccion"].ToString();
+                        _direccion = ds.Tables[0].Rows[0]["Direccion_imagen"].ToString();
                     }
                     else
                     {
@@ -163,8 +163,8 @@ namespace BLL
                 ParamStruct[] parametros = new ParamStruct[4];
                 cls_DAL.agregar_datos_estructura_parametros(ref parametros, 0, "@ID_consecutivo", SqlDbType.Int, _id_consecutivo);
                 cls_DAL.agregar_datos_estructura_parametros(ref parametros, 1, "@Codigo", SqlDbType.Int, _codigo);
-                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 2, "@Nombre", SqlDbType.Int, _nombre);
-                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 3, "@Direccion", SqlDbType.Int, _direccion);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 2, "@Nombre", SqlDbType.VarChar, _nombre);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 3, "@Direccion_imagen", SqlDbType.VarChar, _direccion);
                 cls_DAL.conectar(conexion, ref mensaje_error, ref numero_error);
                 cls_DAL.ejecuta_sqlcommand(conexion, sql, true, parametros, ref mensaje_error, ref numero_error);
                 if (numero_error != 0)
@@ -207,8 +207,8 @@ namespace BLL
                 cls_DAL.agregar_datos_estructura_parametros(ref parametros, 0, "@ID", SqlDbType.Int, _id);
                 cls_DAL.agregar_datos_estructura_parametros(ref parametros, 1, "@ID_consecutivo", SqlDbType.Int, _id_consecutivo);
                 cls_DAL.agregar_datos_estructura_parametros(ref parametros, 2, "@Codigo", SqlDbType.Int, _codigo);
-                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 3, "@Nombre", SqlDbType.Int, _nombre);
-                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 4, "@Direccion", SqlDbType.Int, _direccion);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 3, "@Nombre", SqlDbType.VarChar, _nombre);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 4, "@Direccion_imagen", SqlDbType.VarChar, _direccion);
                 cls_DAL.conectar(conexion, ref mensaje_error, ref numero_error);
                 cls_DAL.ejecuta_sqlcommand(conexion, sql, true, parametros, ref mensaje_error, ref numero_error);
                 if (numero_error != 0)

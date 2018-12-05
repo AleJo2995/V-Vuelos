@@ -154,6 +154,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="AdministrarPaises.aspx" />
     <Content Include="NuevaAerolinea.aspx" />
     <Content Include="Aerolinea.aspx" />
     <Content Include="bin\Antlr3.Runtime.dll" />
@@ -298,6 +299,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdministrarPaises.aspx.cs">
+      <DependentUpon>AdministrarPaises.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdministrarPaises.aspx.designer.cs">
+      <DependentUpon>AdministrarPaises.aspx</DependentUpon>
+    </Compile>
     <Compile Include="NuevaAerolinea.aspx.cs">
       <DependentUpon>NuevaAerolinea.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
