@@ -19,6 +19,11 @@
       <siteMapNode url="~/Aerolinea.aspx" title="Aerolíneas" description="Aerolíneas" />
       <siteMapNode url="~/Puertas.aspx" title="Puertas" description="Puertas" />
     </siteMapNode>
+    <siteMapNode url="" title="Usuario" description="Usuario" roles="Administrador ">
+      <siteMapNode url="~/Entradas.aspx" title="Entradas de vuelos" description="Entradas de vuelos" />
+      <siteMapNode url="~/Salidas.aspx" title="Salidas de vuelos" description="Salidas de vuelos" />
+      <siteMapNode url="~/PagoBoletos.aspx" title="Pago de boletos" description="Pago de boletos" />
+    </siteMapNode>
 
     
   </siteMapNode>
