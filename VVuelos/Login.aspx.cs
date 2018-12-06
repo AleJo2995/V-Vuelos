@@ -8,8 +8,12 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
-
 using System.Data.SqlClient;
+using BotDetect.Web.UI;
+using System.Web.Script.Serialization;
+using System.Net;
+using System.IO;
+
 
 namespace VVuelos
 {
@@ -18,8 +22,12 @@ namespace VVuelos
         protected void Page_Load(object sender, EventArgs e)
         {
 
-        }
+            Login1.Visible = true;
+            if (Request.IsAuthenticated && !string.IsNullOrEmpty(Request.QueryString["ReturnUrl"]))
+                Response.Redirect("~/Default.aspx");
 
-  
+            
+            }
+        
     }
 }

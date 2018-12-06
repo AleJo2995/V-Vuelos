@@ -31,15 +31,6 @@ namespace VVuelos {
         protected global::System.Web.UI.WebControls.TextBox txt_nombre;
         
         /// <summary>
-        /// Control txt_direccion_imagen.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_direccion_imagen;
-        
-        /// <summary>
         /// Control btn_guardar.
         /// </summary>
         /// <remarks>
@@ -56,15 +47,6 @@ namespace VVuelos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_cancelar;
-        
-        /// <summary>
-        /// Control btn_cargar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_cargar;
         
         /// <summary>
         /// Control FileUploadControl.

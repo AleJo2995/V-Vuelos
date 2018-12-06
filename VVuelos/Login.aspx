@@ -1,10 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="VVuelos.Login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="VVuelos.Login"  %>
 
-<!DOCTYPE html>
 <html>
+
 <head runat="server">
 
-    <script src='https://www.google.com/recaptcha/api.js?render=6Lc_sn0UAAAAALc0NcX2JmWoZcxHabh617hJ0WMl'></script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
@@ -76,20 +75,14 @@ span.crt {
 </style>
 
     
+    <script src=https://connect.facebook.net/en_US/all.js type="text/javascript"></script>
+
+
 
 </head>
-<body>
+<body >
 
-    
-          <script>
-grecaptcha.ready(function() {
-grecaptcha.execute('6Lc_sn0UAAAAALc0NcX2JmWoZcxHabh617hJ0WMl', {action: 'action_name'})
-.then(function(token) {
-// Verify the token on the server.
-});
-});
-</script>
-          >
+   
         
 <h2>VVuelos</h2>
 
@@ -103,14 +96,16 @@ grecaptcha.execute('6Lc_sn0UAAAAALc0NcX2JmWoZcxHabh617hJ0WMl', {action: 'action_
 
   <div class="container">
     
-      <asp:Login ID="Login1" runat="server" DisplayRememberMe="False" Width="1002px" DestinationPageUrl="~/Default.aspx">
-      </asp:Login>
-    
+  <asp:Login ID="Login1" runat="server" DisplayRememberMe="False" Width="1002px" DestinationPageUrl="~/Default.aspx" >
+      </asp:Login> 
+      
+
+  
   </div>
 
   <div class="container" style="background-color:#f1f1f1">
-     <span class="crt"><a href="/CrearUsuario.aspx">Crear usuario</a></span>
-           <span class="psw"><a href="/RecuperarContraseña.aspx">¿Olvidó la contraseña?</a></span>
+     <span class="crt"><a href="/CrearUsuario.aspx?cod=1">Crear usuario</a></span>
+     <span class="psw"> <a href="/RecuperarContraseña.aspx>"> ¿Olvidó la contraseña? </a></span>
   </div>
 </form>
 

@@ -31,6 +31,7 @@ namespace VVuelos
 
         private void carga_datos(int ID)
         {
+          
 
             pais.datos_paises(ID);
             if (pais.nombre != "Error")
@@ -55,7 +56,7 @@ namespace VVuelos
 
         protected void btn_guardar_Click(object sender, EventArgs e)
         {
-            txt_direccion_imagen.Text = id.ToString();
+            
             if (FileUploadControl.HasFile)
             {
                 try
@@ -63,7 +64,7 @@ namespace VVuelos
                     string filename = Path.GetFileName(FileUploadControl.FileName);
                     FileUploadControl.SaveAs(Server.MapPath("~/uploads/") + filename);
                     string path = Server.MapPath("~/uploads/") + filename;
-                    direccion = path;
+                    direccion = "~/uploads/"+filename;
                     StatusLabel.Text = "Imagen subida con éxito";
                 }
                 catch (Exception ex)
@@ -90,11 +91,6 @@ namespace VVuelos
 
         }
 
-        protected void btn_cargar_Click(object sender, EventArgs e)
-        {
-
-            
-        }
 
         protected void btn_cancelar_Click(object sender, EventArgs e)
         {

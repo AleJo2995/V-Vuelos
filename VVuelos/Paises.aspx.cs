@@ -31,7 +31,7 @@ namespace VVuelos
            
         }
 
-        protected void MC_Consecutivo_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        protected void MC_Paises_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             MC_Paises.PageIndex = e.NewPageIndex;
         }

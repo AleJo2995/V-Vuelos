@@ -10,42 +10,60 @@
 namespace VVuelos {
     
     
-    public partial class Paises {
+    public partial class AdquisicionBoletos {
         
         /// <summary>
-        /// Control Label1.
+        /// Control ddl_destino.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_destino;
         
         /// <summary>
-        /// Control MC_Paises.
+        /// Control txt_boletos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView MC_Paises;
+        protected global::System.Web.UI.WebControls.TextBox txt_boletos;
         
         /// <summary>
-        /// Control Label3.
+        /// Control rfv_boletos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_boletos;
         
         /// <summary>
-        /// Control btn_nuevo.
+        /// Control btn_reservacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_nuevo;
+        protected global::System.Web.UI.WebControls.Button btn_reservacion;
+        
+        /// <summary>
+        /// Control btn_compra.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_compra;
+        
+        /// <summary>
+        /// Control btn_cancelar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_cancelar;
     }
 }

@@ -13,10 +13,18 @@ namespace VVuelos
         {
 
         }
-
-        protected void btn_nuevo_Click(object sender, EventArgs e)
+        
+        protected void ContinueButton_Click(object sender, EventArgs e)
         {
-
+            if (Convert.ToInt32(Request.QueryString["cod"]) == 1)
+            {
+                Response.Redirect("Login.aspx");
+            }
+            else
+            {
+                Response.Redirect("LoginReservacion.aspx");
+            }
+            
         }
     }
 }

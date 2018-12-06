@@ -114,6 +114,36 @@ namespace BLL
 
         }
 
+        public DataSet carga_aerolineas_por_pais(int ID)
+        {
+            conexion = cls_DAL.trae_conexion("V-Vuelos", ref mensaje_error, ref numero_error);
+            if (conexion == null)
+            {
+                //insertar en la table de errores
+                HttpContext.Current.Response.Redirect("Error.aspx?error=" + numero_error.ToString() + "&men=" + mensaje_error);
+                return null;
+            }
+            else
+            {
+
+                sql = "usp_consulta_aerolineas_por_pais";
+                ParamStruct[] parametros = new ParamStruct[1];
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 0, "@ID", SqlDbType.Int, ID);
+                ds = cls_DAL.ejecuta_dataset(conexion, sql, true, ref mensaje_error, ref numero_error);
+                if (numero_error != 0)
+                {
+                    //insertar en la table de errores
+                    HttpContext.Current.Response.Redirect("Error.aspx?error=" + numero_error.ToString() + "&men=" + mensaje_error);
+                    return null;
+                }
+                else
+                {
+                    return ds;
+                }
+            }
+
+        }
+
 
         public void carga_datos_aerolinea(int ID)
         {
@@ -232,7 +262,13 @@ namespace BLL
                 }
                 else
                 {
-               
+                    Bitacora bitacora = new Bitacora();
+                    bitacora.usuario = System.Web.HttpContext.Current.User.Identity.Name;
+                    bitacora.codigo_registro = 2;
+                    bitacora.tipo = "Modificar";
+                    bitacora.descripcion = "Se actualizó un elemento en la tabla Aerolínea con ID: "+_id;
+                    bitacora.detalle = "Datos insertados: Consecutivo: " + id_consecutivo + " Código: " + codigo + " Código de País: " + codigo_pais + " Nombre: " + nombre + " Dirección de imagen: " + direccion_imagen;
+                    bitacora.agregar_bitacora();
                     cls_DAL.desconectar(conexion, ref mensaje_error, ref numero_error);
              
                 }
@@ -264,6 +300,13 @@ namespace BLL
                 }
                 else
                 {
+                    Bitacora bitacora = new Bitacora();
+                    bitacora.usuario = System.Web.HttpContext.Current.User.Identity.Name;
+                    bitacora.codigo_registro = 3;
+                    bitacora.tipo = "Eliminar";
+                    bitacora.descripcion = "Se eliminó un elemento en la tabla Aerolínea";
+                    bitacora.detalle = "ID eliminado:"+ID;
+                    bitacora.agregar_bitacora();
                     cls_DAL.desconectar(conexion, ref mensaje_error, ref numero_error);
                     return true;
                 }

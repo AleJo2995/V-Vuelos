@@ -229,6 +229,13 @@ namespace BLL
                 }
                 else
                 {
+                    Bitacora bitacora = new Bitacora();
+                    bitacora.usuario = System.Web.HttpContext.Current.User.Identity.Name;
+                    bitacora.codigo_registro = 1;
+                    bitacora.tipo = "Modificar";
+                    bitacora.descripcion = "Se actualizó un elemento en la tabla Consecutivo con ID: "+_id;
+                    bitacora.detalle = "Datos insertados: Consecutivo: " + consecutivo + " Prefijo: " + prefijo + " Rango inicial: " + rango_inicial + " Rango final: " + rango_final;
+                    bitacora.agregar_bitacora();
                     cls_DAL.desconectar(conexion, ref mensaje_error, ref numero_error);
                 
                 }
