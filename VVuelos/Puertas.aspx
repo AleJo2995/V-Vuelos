@@ -8,9 +8,12 @@
             <asp:BoundField DataField="numero_puerta" HeaderText="Número" />
             <asp:BoundField DataField="tipo_puerta" HeaderText="Tipo" />
             <asp:BoundField DataField="condicion_puerta" HeaderText="Condición" />
-            <asp:HyperLinkField DataNavigateUrlFields="codigo_puerta" DataNavigateUrlFormatString="AdministrarPuertas?cod={0}" Text="Editar" />
+            <asp:HyperLinkField DataNavigateUrlFields="id" DataNavigateUrlFormatString="AdministrarPuertas?cod={0}" Text="Editar" />
         </Columns>
     </asp:GridView>
+
+        <asp:Label ID="Label3" runat="server" ForeColor="Red"></asp:Label>
+    <asp:Button ID="btn_nuevo" runat="server" Text="Nuevo" OnClick="btn_nuevo_Click" />
 
 
    

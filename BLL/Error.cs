@@ -102,8 +102,6 @@ namespace BLL
                 cls_DAL.conectar(conexion, ref mensaje_error, ref numero_error);
                 cls_DAL.ejecuta_sqlcommand(conexion, sql, true, parametros, ref mensaje_error, ref numero_error);
                 cls_DAL.desconectar(conexion, ref mensaje_error, ref numero_error);
-
-         
             }
         }
 

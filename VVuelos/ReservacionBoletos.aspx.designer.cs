@@ -10,33 +10,24 @@
 namespace VVuelos {
     
     
-    public partial class Puertas {
+    public partial class ReservacionBoletos {
         
         /// <summary>
-        /// Control MC_Puertas.
+        /// Control ddl_metodo_pago.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView MC_Puertas;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_metodo_pago;
         
         /// <summary>
-        /// Control Label3.
+        /// Control ddl_cuenta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
-        
-        /// <summary>
-        /// Control btn_nuevo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_nuevo;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_cuenta;
     }
 }
