@@ -189,7 +189,7 @@ namespace BLL
                     bitacora.codigo_registro = 1;
                     bitacora.tipo = "Agregar";
                     bitacora.descripcion = "Se insertó un nuevo elemento en la tabla Consecutivo";
-                    bitacora.detalle = "Datos insertados: Consecutivo: " +consecutivo+" Prefijo: "+prefijo+" Rango inicial: "+rango_inicial+" Rango final: "+rango_final;
+                    bitacora.detalle = "Datos insertados, Consecutivo: " +consecutivo+", Prefijo: "+prefijo+", Rango inicial: "+rango_inicial+", Rango final: "+rango_final;
                     bitacora.agregar_bitacora();
                     cls_DAL.desconectar(conexion, ref mensaje_error, ref numero_error);
                     
@@ -234,7 +234,7 @@ namespace BLL
                     bitacora.codigo_registro = 1;
                     bitacora.tipo = "Modificar";
                     bitacora.descripcion = "Se actualizó un elemento en la tabla Consecutivo con ID: "+_id;
-                    bitacora.detalle = "Datos insertados: Consecutivo: " + consecutivo + " Prefijo: " + prefijo + " Rango inicial: " + rango_inicial + " Rango final: " + rango_final;
+                    bitacora.detalle = "Datos insertados, Consecutivo: " + consecutivo + ", Prefijo: " + prefijo + ", Rango inicial: " + rango_inicial + ", Rango final: " + rango_final;
                     bitacora.agregar_bitacora();
                     cls_DAL.desconectar(conexion, ref mensaje_error, ref numero_error);
                 

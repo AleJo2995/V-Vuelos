@@ -1,7 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AdministrarPaises.aspx.cs" Inherits="VVuelos.AdministrarPaises" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-
     <table class="nav-justified">
     <tr>
         <td>&nbsp;</td>

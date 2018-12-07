@@ -27,7 +27,34 @@ namespace VVuelos
                 Response.Redirect("~/Default.aspx");
 
             
-            }
+         }
         
+        public bool captcha()
+        {
+            string response = Request("g-recaptcha-response");
+            string secretkey = "6Lc_sn0UAAAAACI_YPmNcw6aY87fNWeU1NwuaAu9";
+            bool secret = false;
+            HttpWebRequest google = (HttpWebRequest)WebRequest.Create("https://www.google.com/recaptcha/api/siteverify?secret=" + secretkey + "&response=" + response);
+            try
+            {
+                using (WebResponse web = google.GetResponse()) ;
+                {
+                    using (StreamReader read = new StreamReader(web.GetResponseStream()));
+                    {
+                        string json = readStream.ReadToEnd();
+                        JavaScriptSerializer js = new JavaScriptSerializer();
+                        CaptchaValidate data = js.Deserialize<CaptchaValidate>(json);
+                    }
+                    secret = Convert.ToBoolean(data.success);
+                }
+                return secret;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
     }
 }

@@ -89,6 +89,9 @@
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Recaptcha, Version=1.0.5.0, Culture=neutral, PublicKeyToken=9afc4d65b28c38c2, processorArchitecture=MSIL">
+      <HintPath>..\packages\recaptcha.1.0.5.0\lib\.NetFramework 4.0\Recaptcha.dll</HintPath>
+    </Reference>
     <Reference Include="SC.Recaptcha, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\SC.Recaptcha.1.0.3.0\lib\net451\SC.Recaptcha.dll</HintPath>
     </Reference>
@@ -179,10 +182,11 @@
     <Content Include="AdministrarMetodosPago.aspx" />
     <Content Include="AdministrarPaises.aspx" />
     <Content Include="AdministrarPuertas.aspx" />
-    <Content Include="Aerolinea_por_pais.aspx" />
+    <Content Include="AerolineaPorPais.aspx" />
     <Content Include="CompraBoletos.aspx" />
+    <Content Include="DetallesBitacora.aspx" />
     <Content Include="LoginBoletos.aspx" />
-    <Content Include="NuevaAerolinea.aspx" />
+    <Content Include="AdministrarAerolinea.aspx" />
     <Content Include="Aerolinea.aspx" />
     <Content Include="bin\Antlr3.Runtime.dll" />
     <Content Include="bin\Antlr3.Runtime.pdb" />
@@ -278,7 +282,7 @@
     <Content Include="bin\VVuelos.dll.config" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Login.aspx" />
-    <Content Include="NuevoConsecutivo.aspx" />
+    <Content Include="AdministrarConsecutivo.aspx" />
     <Content Include="AdquisicionBoletos.aspx" />
     <Content Include="Paises.aspx" />
     <Content Include="Puertas.aspx" />
@@ -348,19 +352,27 @@
     <Compile Include="AdministrarPuertas.aspx.designer.cs">
       <DependentUpon>AdministrarPuertas.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Aerolinea_por_pais.aspx.cs">
-      <DependentUpon>Aerolinea_por_pais.aspx</DependentUpon>
+    <Compile Include="AerolineaPorPais.aspx.cs">
+      <DependentUpon>AerolineaPorPais.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Aerolinea_por_pais.aspx.designer.cs">
-      <DependentUpon>Aerolinea_por_pais.aspx</DependentUpon>
+    <Compile Include="AerolineaPorPais.aspx.designer.cs">
+      <DependentUpon>AerolineaPorPais.aspx</DependentUpon>
     </Compile>
+    <Content Include="App_Code\Captcha.cs" />
     <Compile Include="CompraBoletos.aspx.cs">
       <DependentUpon>CompraBoletos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CompraBoletos.aspx.designer.cs">
       <DependentUpon>CompraBoletos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DetallesBitacora.aspx.cs">
+      <DependentUpon>DetallesBitacora.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DetallesBitacora.aspx.designer.cs">
+      <DependentUpon>DetallesBitacora.aspx</DependentUpon>
     </Compile>
     <Compile Include="LoginBoletos.aspx.cs">
       <DependentUpon>LoginBoletos.aspx</DependentUpon>
@@ -369,12 +381,12 @@
     <Compile Include="LoginBoletos.aspx.designer.cs">
       <DependentUpon>LoginBoletos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="NuevaAerolinea.aspx.cs">
-      <DependentUpon>NuevaAerolinea.aspx</DependentUpon>
+    <Compile Include="AdministrarAerolinea.aspx.cs">
+      <DependentUpon>AdministrarAerolinea.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="NuevaAerolinea.aspx.designer.cs">
-      <DependentUpon>NuevaAerolinea.aspx</DependentUpon>
+    <Compile Include="AdministrarAerolinea.aspx.designer.cs">
+      <DependentUpon>AdministrarAerolinea.aspx</DependentUpon>
     </Compile>
     <Compile Include="Aerolinea.aspx.cs">
       <DependentUpon>Aerolinea.aspx</DependentUpon>
@@ -458,12 +470,12 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="NuevoConsecutivo.aspx.cs">
-      <DependentUpon>NuevoConsecutivo.aspx</DependentUpon>
+    <Compile Include="AdministrarConsecutivo.aspx.cs">
+      <DependentUpon>AdministrarConsecutivo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="NuevoConsecutivo.aspx.designer.cs">
-      <DependentUpon>NuevoConsecutivo.aspx</DependentUpon>
+    <Compile Include="AdministrarConsecutivo.aspx.designer.cs">
+      <DependentUpon>AdministrarConsecutivo.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdquisicionBoletos.aspx.cs">
       <DependentUpon>AdquisicionBoletos.aspx</DependentUpon>

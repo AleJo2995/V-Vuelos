@@ -13,7 +13,7 @@ using BLL;
 
 namespace VVuelos
 {
-    public partial class NuevaAerolinea : System.Web.UI.Page
+    public partial class AdministrarAerolinea : System.Web.UI.Page
     {
 
         BLL.Aerolinea aerolinea = new BLL.Aerolinea();

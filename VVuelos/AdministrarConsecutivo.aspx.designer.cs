@@ -10,7 +10,7 @@
 namespace VVuelos {
     
     
-    public partial class NuevoConsecutivo {
+    public partial class AdministrarConsecutivo {
         
         /// <summary>
         /// Control Label5.

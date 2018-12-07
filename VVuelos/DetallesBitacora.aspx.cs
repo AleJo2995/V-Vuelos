@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace VVuelos
 {
-    public partial class Aerolinea_por_pais : System.Web.UI.Page
+    public partial class DetallesBitacora : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

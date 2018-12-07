@@ -262,7 +262,7 @@ namespace BLL
                     bitacora.codigo_registro = 1;
                     bitacora.tipo = "Agregar";
                     bitacora.descripcion = "Se insertó un nuevo elemento en la tabla Vuelo";
-                    bitacora.detalle = "Datos insertados: Consecutivo: " + id_consecutivo + " Código: " + codigo + " Tipo: " + tipo + " Aerolínea: " + aerolinea + " Aeropuerto: " + aeropuerto + " Procedencia: " + procedencia + " Destino: " + destino+ " Fecha: "+fecha+ " Hora: "+hora+" Estado: "+estado+" Número de boletos: "+numero_boletos+" Precio: "+precio;
+                    bitacora.detalle = "Consecutivo: " + id_consecutivo + ", Código: " + codigo + ", Tipo: " + tipo + ", Aerolínea: " + aerolinea + ", Aeropuerto: " + aeropuerto + ", Procedencia: " + procedencia + ", Destino: " + destino+ ", Fecha: "+fecha+ ", Hora: "+hora+", Estado: "+estado+", Número de boletos: "+numero_boletos+", Precio: "+precio;
                     bitacora.agregar_bitacora();
                     cls_DAL.desconectar(conexion, ref mensaje_error, ref numero_error);
                   
@@ -308,6 +308,15 @@ namespace BLL
                 }
                 else
                 {
+                    Bitacora bitacora = new Bitacora();
+                    bitacora.usuario = System.Web.HttpContext.Current.User.Identity.Name;
+                    bitacora.codigo_registro = 2;
+                    bitacora.tipo = "Modificar";
+                    bitacora.descripcion = "Se modificó un elemento en la tabla Vuelo";
+                    bitacora.detalle = "Consecutivo: " + id_consecutivo + ", Código: " + codigo + ", Tipo: " + tipo + ", Aerolínea: " + aerolinea + ", Aeropuerto: " + aeropuerto + ", Procedencia: " + procedencia + ", Destino: " + destino + ", Fecha: " + fecha + ", Hora: " + hora + ", Estado: " + estado + ", Número de boletos: " + numero_boletos + ", Precio: " + precio;
+                    bitacora.agregar_bitacora();
+                    cls_DAL.desconectar(conexion, ref mensaje_error, ref numero_error);
+
                     cls_DAL.desconectar(conexion, ref mensaje_error, ref numero_error);
                  
                 }
@@ -339,6 +348,13 @@ namespace BLL
                 }
                 else
                 {
+                    Bitacora bitacora = new Bitacora();
+                    bitacora.usuario = System.Web.HttpContext.Current.User.Identity.Name;
+                    bitacora.codigo_registro = 3;
+                    bitacora.tipo = "Eliminar";
+                    bitacora.descripcion = "Se eliminó un elemento en la tabla Vuelo";
+                    bitacora.detalle = "ID eliminado: " + id;
+                    bitacora.agregar_bitacora();
                     cls_DAL.desconectar(conexion, ref mensaje_error, ref numero_error);
                     return true;
                 }

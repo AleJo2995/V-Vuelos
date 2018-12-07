@@ -187,6 +187,13 @@ namespace BLL
                 }
                 else
                 {
+                    Bitacora bitacora = new Bitacora();
+                    bitacora.usuario = System.Web.HttpContext.Current.User.Identity.Name;
+                    bitacora.codigo_registro = 1;
+                    bitacora.tipo = "Agregar";
+                    bitacora.descripcion = "Se insertó un nuevo elemento en la tabla Reservacion_Boletos";
+                    bitacora.detalle = "Consecutivo: " + id_consecutivo + ", Usuario: " + usuario + ", Booking ID: " + booking_id + ", Vuelo: " + vuelo + ", Cantidad de Boletos: " + cantidad_boletos;
+                    bitacora.agregar_bitacora();
                     cls_DAL.desconectar(conexion, ref mensaje_error, ref numero_error);
                   
                 }
@@ -224,6 +231,13 @@ namespace BLL
                 }
                 else
                 {
+                    Bitacora bitacora = new Bitacora();
+                    bitacora.usuario = System.Web.HttpContext.Current.User.Identity.Name;
+                    bitacora.codigo_registro = 2;
+                    bitacora.tipo = "Modificar";
+                    bitacora.descripcion = "Se modificó un elemento en la tabla Reservacion_Boletos";
+                    bitacora.detalle = "Consecutivo: " + id_consecutivo + ", Usuario: " + usuario + ", Booking ID: " + booking_id + ", Vuelo: " + vuelo + ", Cantidad de Boletos: " + cantidad_boletos;
+                    bitacora.agregar_bitacora();
                     cls_DAL.desconectar(conexion, ref mensaje_error, ref numero_error);
                    
                 }
@@ -255,6 +269,13 @@ namespace BLL
                 }
                 else
                 {
+                    Bitacora bitacora = new Bitacora();
+                    bitacora.usuario = System.Web.HttpContext.Current.User.Identity.Name;
+                    bitacora.codigo_registro = 3;
+                    bitacora.tipo = "Eliminar";
+                    bitacora.descripcion = "Se eliminó un elemento en la tabla Reservacion_Boletos";
+                    bitacora.detalle = "ID eliminado: " + id;
+                    bitacora.agregar_bitacora();
                     cls_DAL.desconectar(conexion, ref mensaje_error, ref numero_error);
                     return true;
                 }
