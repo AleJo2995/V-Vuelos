@@ -10,13 +10,13 @@
       </siteMapNode>
     </siteMapNode>
     <siteMapNode url="" title="Administración" description="Administración" roles="Administrador, Mantenimiento">
-      <siteMapNode url="~/NuevoConsecutivo.aspx" title="Consecutivos" description="Consecutivos" />
+      <siteMapNode url="~/Consecutivo.aspx" title="Consecutivos" description="Consecutivos" />
       <siteMapNode url="~/Paises.aspx" title="Países" description="Países" />
-      <siteMapNode url="~/NuevaAerolinea.aspx" title="Agregar Aerolinea" description="Agregar Aerolínea" />
+      <siteMapNode url="~/Aerolinea.aspx" title="Aerolineas" description="Agregar Aerolínea" />
     </siteMapNode>
     <siteMapNode url="" title="Consultas" description="Consultas" roles="Administrador, Consulta ">
       <siteMapNode url="~/Bitacora.aspx" title="Bitácora" description="Bitácora" />
-      <siteMapNode url="~/Aerolinea.aspx" title="Aerolíneas" description="Aerolíneas" />
+      <siteMapNode url="~/AerolineaPorPais.aspx" title="Aerolíneas" description="Aerolíneas" />
       <siteMapNode url="~/Puertas.aspx" title="Puertas" description="Puertas" />
     </siteMapNode>
     <siteMapNode url="" title="Usuario" description="Usuario" roles="*">

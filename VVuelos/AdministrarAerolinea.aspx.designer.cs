@@ -10,7 +10,7 @@
 namespace VVuelos {
     
     
-    public partial class NuevaAerolinea {
+    public partial class AdministrarAerolinea {
         
         /// <summary>
         /// Control txt_codigo.

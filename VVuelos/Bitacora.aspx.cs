@@ -11,7 +11,24 @@ namespace VVuelos
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (!Page.IsPostBack)
+            {
+                Traer_Bitacora();
+            }
+        }
+
+        private void Traer_Bitacora()
+        {
+
+            BLL.Bitacora bitacora = new BLL.Bitacora();
+            GV_Bitacora.DataSource = bitacora.carga_bitacora().Tables[0];
+            GV_Bitacora.DataBind();
+
+        }
+
+        protected void MC_Bitacora_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GV_Bitacora.PageIndex = e.NewPageIndex;
         }
     }
 }

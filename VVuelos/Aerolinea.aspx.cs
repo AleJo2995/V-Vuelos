@@ -52,20 +52,24 @@ using BLL;
         {
       
         BLL.Aerolinea aerolinea = new BLL.Aerolinea();
-            if (e.CommandName == "Eliminar")
+            if (e.CommandName.Equals( "Eliminar"))
         {
             
 
             int fila = Convert.ToInt32(e.CommandArgument);
-                int ID = Convert.ToInt32(GV_Aerolinea.DataKeys[fila].Value);
-                if (aerolinea.eliminar_aerolinea(ID))
+            GridViewRow selectedRow = GV_Aerolinea.Rows[fila];
+            int id = Convert.ToInt32(selectedRow.Cells[0].Text);
+
+            if (aerolinea.eliminar_aerolinea(id))
                 {
-                    this.Lista_aerolineas();
-               
-            }
-          
+                
+                this.Lista_aerolineas();
+
             }
 
+
+        }
+        
 
         }
 
@@ -73,5 +77,8 @@ using BLL;
         {
         Response.Redirect("NuevaAerolinea.aspx?cod=0");
     }
-    }
+
+   
+
+}
    

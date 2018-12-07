@@ -1,13 +1,13 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Aerolinea.aspx.cs" Inherits="Aerolinea" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <asp:Label ID="Label1" runat="server" ForeColor="Red"></asp:Label>
-    <asp:GridView ID="GV_Aerolinea" runat="server" AllowPaging="True" AutoGenerateColumns="False" PageSize="5" OnPageIndexChanging="GV_Aerolinea_PageIndexChanging" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical">
+    <asp:GridView ID="GV_Aerolinea" runat="server" AllowPaging="True" AutoGenerateColumns="False"  DataKeyNames="id" PageSize="5" OnPageIndexChanging="GV_Aerolinea_PageIndexChanging" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical">
         <AlternatingRowStyle BackColor="Gainsboro" />
         <Columns>
             <asp:BoundField DataField="Codigo" HeaderText="Código" SortExpression="Codigo" />
             <asp:BoundField DataField="nombre" HeaderText="Nombre" SortExpression="nombre" />
             <asp:ImageField DataImageUrlField="Direccion_imagen"></asp:ImageField>
-              <asp:HyperLinkField Text="Editar" DataNavigateUrlFields="ID" DataNavigateUrlFormatString="NuevaAerolinea.aspx?cod={0}" />
+              <asp:HyperLinkField Text="Editar" DataNavigateUrlFields="ID" DataNavigateUrlFormatString="AdministrarAerolinea.aspx?cod={0}" />
               <asp:ButtonField Text="Eliminar" CommandName="Eliminar" />
         </Columns>
         <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />

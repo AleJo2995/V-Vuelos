@@ -191,7 +191,7 @@ namespace BLL
                     bitacora.codigo_registro = 1;
                     bitacora.tipo = "Agregar";
                     bitacora.descripcion = "Se insertó un nuevo elemento en la tabla Historial_Transacciones";
-                    bitacora.detalle = "Datos insertados: Consecutivo: " + id_consecutivo + " Usuario: " + usuario + " Método de Pago: " + metodo_pago + " Monto: " + monto + " Número de vuelo";
+                    bitacora.detalle = "Datos insertados, Consecutivo: " + id_consecutivo + ", Usuario: " + usuario + ", Método de Pago: " + metodo_pago + ", Monto: " + monto + ", Número de vuelo";
                     bitacora.agregar_bitacora();
                     cls_DAL.desconectar(conexion, ref mensaje_error, ref numero_error);
                   

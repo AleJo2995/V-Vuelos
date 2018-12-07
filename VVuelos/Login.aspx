@@ -76,13 +76,20 @@ span.crt {
 
     
     <script src=https://connect.facebook.net/en_US/all.js type="text/javascript"></script>
-
+    <script src='https://www.google.com/recaptcha/api.js?render=6Lc_sn0UAAAAALc0NcX2JmWoZcxHabh617hJ0WMl'></script>
 
 
 </head>
 <body >
 
-   
+  <script>
+grecaptcha.ready(function() {
+grecaptcha.execute('6Lc_sn0UAAAAALc0NcX2JmWoZcxHabh617hJ0WMl', {action: 'action_name'})
+.then(function(token) {
+// Verify the token on the server.
+});
+});
+</script> 
         
 <h2>VVuelos</h2>
 

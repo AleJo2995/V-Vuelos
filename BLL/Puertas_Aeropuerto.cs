@@ -253,6 +253,13 @@ namespace BLL
                 }
                 else
                 {
+                    Bitacora bitacora = new Bitacora();
+                    bitacora.usuario = System.Web.HttpContext.Current.User.Identity.Name;
+                    bitacora.codigo_registro = 2;
+                    bitacora.tipo = "Modificar";
+                    bitacora.descripcion = "Se modificó un elemento en la tabla Puertas_Aeropuerto";
+                    bitacora.detalle = "Consecutivo: " + id_consecutivo + ", Aeropuerto: " + aeropuerto + ", Código de Puerta: " + codigo_puerta + ", Codigo de Aerolínea: " + codigo_aerolinea + ", Número de puerta: " + numero_puerta + ", Tipo Puerta: " + tipo_puerta + ", Condición de puerta: " + condicion_puerta;
+                    bitacora.agregar_bitacora();
                     cls_DAL.desconectar(conexion, ref mensaje_error, ref numero_error);
                  
                 }
@@ -284,6 +291,13 @@ namespace BLL
                 }
                 else
                 {
+                    Bitacora bitacora = new Bitacora();
+                    bitacora.usuario = System.Web.HttpContext.Current.User.Identity.Name;
+                    bitacora.codigo_registro = 3;
+                    bitacora.tipo = "Eliminar";
+                    bitacora.descripcion = "Se eliminó un elemento en la tabla Puertas_Aeropuerto";
+                    bitacora.detalle = "ID eliminado: " + id;
+                    bitacora.agregar_bitacora();
                     cls_DAL.desconectar(conexion, ref mensaje_error, ref numero_error);
                     return true;
                 }

@@ -114,7 +114,7 @@ namespace BLL
 
         }
 
-        public DataSet carga_aerolineas_por_pais(int ID)
+        public DataSet carga_aerolinea_por_pais(int codigo)
         {
             conexion = cls_DAL.trae_conexion("V-Vuelos", ref mensaje_error, ref numero_error);
             if (conexion == null)
@@ -125,11 +125,11 @@ namespace BLL
             }
             else
             {
-
                 sql = "usp_consulta_aerolineas_por_pais";
+
                 ParamStruct[] parametros = new ParamStruct[1];
-                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 0, "@ID", SqlDbType.Int, ID);
-                ds = cls_DAL.ejecuta_dataset(conexion, sql, true, ref mensaje_error, ref numero_error);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 0, "@Codigo_pais", SqlDbType.Int, codigo);
+                ds = cls_DAL.ejecuta_dataset(conexion, sql, true, parametros, ref mensaje_error, ref numero_error);
                 if (numero_error != 0)
                 {
                     //insertar en la table de errores
@@ -222,7 +222,7 @@ namespace BLL
                     bitacora.codigo_registro = 1;
                     bitacora.tipo = "Agregar";
                     bitacora.descripcion = "Se insertó un nuevo elemento en la tabla Aerolínea";
-                    bitacora.detalle = "Datos insertados: Consecutivo: " + id_consecutivo + " Código: " + codigo + " Código de País: " + codigo_pais + " Nombre: " + nombre+ " Dirección de imagen: " + direccion_imagen;
+                    bitacora.detalle = "Datos insertados, Consecutivo: " + id_consecutivo + ", Código: " + codigo + ", Código de País: " + codigo_pais + ", Nombre: " + nombre+ ", Dirección de imagen: " + direccion_imagen;
                     bitacora.agregar_bitacora();
                     cls_DAL.desconectar(conexion, ref mensaje_error, ref numero_error);
                     
@@ -267,7 +267,7 @@ namespace BLL
                     bitacora.codigo_registro = 2;
                     bitacora.tipo = "Modificar";
                     bitacora.descripcion = "Se actualizó un elemento en la tabla Aerolínea con ID: "+_id;
-                    bitacora.detalle = "Datos insertados: Consecutivo: " + id_consecutivo + " Código: " + codigo + " Código de País: " + codigo_pais + " Nombre: " + nombre + " Dirección de imagen: " + direccion_imagen;
+                    bitacora.detalle = "Datos insertados, Consecutivo: " + id_consecutivo + ", Código: " + codigo + ", Código de País: " + codigo_pais + ", Nombre: " + nombre + ", Dirección de imagen: " + direccion_imagen;
                     bitacora.agregar_bitacora();
                     cls_DAL.desconectar(conexion, ref mensaje_error, ref numero_error);
              

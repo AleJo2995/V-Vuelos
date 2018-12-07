@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="NuevoConsecutivo.aspx.cs" Inherits="VVuelos.NuevoConsecutivo" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AdministrarConsecutivo.aspx.cs" Inherits="VVuelos.AdministrarConsecutivo" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <asp:Label ID="Label5" runat="server" ForeColor="Red"></asp:Label>
@@ -79,8 +79,9 @@
 	        var masculino = document.getElementById("masculino");
 	        var femenino = document.getElementById("femenino");
 	        var asunto = document.getElementById("asunto");
-	        var comentarios = document.getElementById("comentarios");
+            var comentarios = document.getElementById("comentarios");
 
+    
 	        if (!nombre.value){
 		        alert("El campo nombre es requerido");
 		        nombre.focus();
