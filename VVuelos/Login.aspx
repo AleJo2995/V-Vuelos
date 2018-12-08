@@ -75,21 +75,55 @@ span.crt {
 </style>
 
     
-    <script src=https://connect.facebook.net/en_US/all.js type="text/javascript"></script>
-    <script src='https://www.google.com/recaptcha/api.js?render=6Lc_sn0UAAAAALc0NcX2JmWoZcxHabh617hJ0WMl'></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
+    <div id="fb-root"></div>
+    <a href="#" onclick="loginByFacebook();">Login with Facebook</a>
+
+    <%-- now this is some required facebook's JS, two things to pay attention to
+    1. setting the ApplicationID, To make this project work you have to edit "callback.aspx.cs" and put your facebook-app-key there
+    2. Adjust the permissions you want to get from user, set that in scope options below. --%>
+    <script type="text/javascript">
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '191743085107639',
+                status: true, // check login status
+                cookie: true, // enable cookies to allow the server to access the session
+                xfbml: true, // parse XFBML
+                oauth: true // enable OAuth 2.0
+            });
+        };
+        (function () {
+            var e = document.createElement('script'); e.async = true;
+            e.src = document.location.protocol +
+            '//connect.facebook.net/en_US/all.js';
+            document.getElementById('fb-root').appendChild(e);
+        }());
+
+        function loginByFacebook() {
+            FB.login(function (response) {
+                if (response.authResponse) {
+                    FacebookLoggedIn(response);
+                } else {
+                    console.log('User cancelled login or did not fully authorize.');
+                }
+            }, { scope: 'user_birthday,user_hometown,user_location,email' });
+        }
+
+        function FacebookLoggedIn(response) {
+            var loc = '/default.aspx';
+            if (loc.indexOf('?') > -1)
+                window.location = loc + '&authprv=facebook&access_token=' + response.authResponse.accessToken;
+            else
+                window.location = loc + '?authprv=facebook&access_token=' + response.authResponse.accessToken;
+        }
+    </script>
 
 
 </head>
 <body >
 
-  <script>
-grecaptcha.ready(function() {
-grecaptcha.execute('6Lc_sn0UAAAAALc0NcX2JmWoZcxHabh617hJ0WMl', {action: 'action_name'})
-.then(function(token) {
-// Verify the token on the server.
-});
-});
-</script> 
+
         
 <h2>VVuelos</h2>
 
@@ -105,10 +139,11 @@ grecaptcha.execute('6Lc_sn0UAAAAALc0NcX2JmWoZcxHabh617hJ0WMl', {action: 'action_
     
   <asp:Login ID="Login1" runat="server" DisplayRememberMe="False" Width="1002px" DestinationPageUrl="~/Default.aspx" >
       </asp:Login> 
-      
-
-  
+      <div class="g-recaptcha" data-sitekey="6LdtcH8UAAAAAKETa_PKgf8R8YA6j2siw4gkUyNO"></div>
+      <asp:Button ID="btn_captcha" runat="server" Text="Validar captcha" OnClick="btn_captcha_Click" />
+  <asp:Label ID="lbl_captcha" runat="server" ForeColor="Red"></asp:Label>
   </div>
+
 
   <div class="container" style="background-color:#f1f1f1">
      <span class="crt"><a href="/CrearUsuario.aspx?cod=1">Crear usuario</a></span>

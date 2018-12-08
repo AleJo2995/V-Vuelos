@@ -27,7 +27,7 @@ namespace VVuelos
 
         protected void btn_nuevo_Click(object sender, EventArgs e)
         {
-            Response.Redirect("NuevoConsecutivo.aspx");
+            Response.Redirect("AdministrarConsecutivo.aspx");
         }
 
         private void Traer_Consecutivos()
