@@ -29,9 +29,9 @@ namespace BLL
             set { _id_consecutivo = value; }
         }
 
-        private int _usuario;
+        private string _usuario;
 
-        public int usuario
+        public string usuario
         {
             get { return _usuario; }
             set { _usuario = value; }
@@ -45,9 +45,9 @@ namespace BLL
             set { _metodo_pago = value; }
         }
 
-        private int _monto;
+        private decimal _monto;
 
-        public int monto
+        public decimal monto
         {
             get { return _monto; }
             set { _monto = value; }
@@ -140,9 +140,9 @@ namespace BLL
                     {
                         _id = Convert.ToInt32(ds.Tables[0].Rows[0]["ID"]);
                         _id_consecutivo = Convert.ToInt32(ds.Tables[0].Rows[0]["ID_consecutivo"]);
-                        _usuario = Convert.ToInt32(ds.Tables[0].Rows[0]["Usuario"]);
+                        _usuario = ds.Tables[0].Rows[0]["Usuario"].ToString();
                         _metodo_pago = Convert.ToInt32(ds.Tables[0].Rows[0]["Metodo_pago"]);
-                        _monto = Convert.ToInt32(ds.Tables[0].Rows[0]["Monto"]);
+                        _monto = Convert.ToDecimal(ds.Tables[0].Rows[0]["Monto"]);
                         _numero_vuelo = Convert.ToInt32(ds.Tables[0].Rows[0]["Numero_vuelo"]);
                     }
                     else
@@ -171,9 +171,9 @@ namespace BLL
              
                 ParamStruct[] parametros = new ParamStruct[5];
                 cls_DAL.agregar_datos_estructura_parametros(ref parametros, 0, "@ID_consecutivo", SqlDbType.Int, _id_consecutivo);
-                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 1, "@Usuario", SqlDbType.Int, _usuario);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 1, "@Usuario", SqlDbType.VarChar, _usuario);
                 cls_DAL.agregar_datos_estructura_parametros(ref parametros, 2, "@Metodo_pago", SqlDbType.Int, _metodo_pago);
-                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 3, "@Monto", SqlDbType.Int, _monto);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 3, "@Monto", SqlDbType.Decimal, _monto);
                 cls_DAL.agregar_datos_estructura_parametros(ref parametros, 4, "@Numero_vuelo", SqlDbType.Int, _numero_vuelo);
                 cls_DAL.conectar(conexion, ref mensaje_error, ref numero_error);
                 cls_DAL.ejecuta_sqlcommand(conexion, sql, true, parametros, ref mensaje_error, ref numero_error);
@@ -216,9 +216,9 @@ namespace BLL
                 ParamStruct[] parametros = new ParamStruct[6];
                 cls_DAL.agregar_datos_estructura_parametros(ref parametros, 0, "@ID", SqlDbType.Int, _id);
                 cls_DAL.agregar_datos_estructura_parametros(ref parametros, 1, "@ID_consecutivo", SqlDbType.Int, _id_consecutivo);
-                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 2, "@Usuario", SqlDbType.Int, _usuario);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 2, "@Usuario", SqlDbType.VarChar, _usuario);
                 cls_DAL.agregar_datos_estructura_parametros(ref parametros, 3, "@Metodo_pago", SqlDbType.Int, _metodo_pago);
-                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 4, "@Monto", SqlDbType.Int, _monto);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 4, "@Monto", SqlDbType.Decimal, _monto);
                 cls_DAL.agregar_datos_estructura_parametros(ref parametros, 5, "@Numero_vuelo", SqlDbType.Int, _numero_vuelo);
                 cls_DAL.conectar(conexion, ref mensaje_error, ref numero_error);
                 cls_DAL.ejecuta_sqlcommand(conexion, sql, true, parametros, ref mensaje_error, ref numero_error);

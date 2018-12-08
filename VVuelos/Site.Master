@@ -69,6 +69,7 @@
                     <td class="auto-style8">
                         <asp:Label ID="Label2" runat="server" Text="Usuario:"></asp:Label>
                         <br />
+                    
                         <asp:LoginName ID="LoginName2" runat="server" />
                     </td>
                 </tr>

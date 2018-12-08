@@ -65,7 +65,7 @@ namespace VVuelos
                     FileUploadControl.SaveAs(Server.MapPath("~/uploads/") + filename);
                     string path = Server.MapPath("~/uploads/") + filename;
                     direccion = "~/uploads/"+filename;
-                    StatusLabel.Text = "Imagen subida con éxito";
+                    StatusLabel.Text = "Imagen subida con éxito"+filename;
                 }
                 catch (Exception ex)
                 {

@@ -16,7 +16,8 @@ namespace VVuelos
         {
             if (!Page.IsPostBack)
             {
-
+                ddl_descripcion.DataSource = consecutivo.lista_consecutivos();
+                ddl_descripcion.DataBind();
                 if (Convert.ToInt32(Request.QueryString["cod"]) > 0)
                 {
                     this.carga_datos(Convert.ToInt32(Request.QueryString["cod"]));
@@ -56,6 +57,7 @@ namespace VVuelos
         protected void btn_guardar_Click(object sender, EventArgs e)
         {
             BLL.Consecutivo consecutivo = new BLL.Consecutivo();
+            consecutivo.id = Convert.ToInt32(Request.QueryString["cod"]);
             consecutivo.consecutivo = Int32.Parse(txt_consecutivo.Text);
             consecutivo.descripcion = ddl_descripcion.Text;
 

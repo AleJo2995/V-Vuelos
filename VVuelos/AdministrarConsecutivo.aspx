@@ -6,14 +6,15 @@
         Información del Consecutivo
         <asp:Label ID="Label4" runat="server"></asp:Label>
     </p>
+      
+
 
     <table class="nav-justified">
         <tr>
             <td style="height: 22px">Descripción:</td>
             <td style="height: 22px">
-                <asp:DropDownList ID="ddl_descripcion" runat="server" DataSourceID="SqlDataSource1" DataTextField="Descripcion" DataValueField="Descripcion">
+                    <asp:DropDownList ID="ddl_descripcion" runat="server" DataTextField="Descripcion" DataValueField="Descripcion">
                 </asp:DropDownList>
-                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:V-Vuelos %>" SelectCommand="SELECT [Descripcion] FROM [Consecutivo]"></asp:SqlDataSource>
             </td>
         </tr>
         <tr>

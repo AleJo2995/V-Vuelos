@@ -51,12 +51,6 @@
     <UserSecretsId>{SecretsUlacit}</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BotDetect, Version=4.4.0.0, Culture=neutral, PublicKeyToken=74616036388b765f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Captcha.4.4.0\lib\net35\BotDetect.dll</HintPath>
-    </Reference>
-    <Reference Include="BotDetect.Web.Mvc, Version=4.4.0.0, Culture=neutral, PublicKeyToken=74616036388b765f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Captcha.4.4.0\lib\net35\BotDetect.Web.Mvc.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Extensions.Configuration, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.Configuration.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Configuration.dll</HintPath>
@@ -91,9 +85,6 @@
     </Reference>
     <Reference Include="Recaptcha, Version=1.0.5.0, Culture=neutral, PublicKeyToken=9afc4d65b28c38c2, processorArchitecture=MSIL">
       <HintPath>..\packages\recaptcha.1.0.5.0\lib\.NetFramework 4.0\Recaptcha.dll</HintPath>
-    </Reference>
-    <Reference Include="SC.Recaptcha, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SC.Recaptcha.1.0.3.0\lib\net451\SC.Recaptcha.dll</HintPath>
     </Reference>
     <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
@@ -359,7 +350,8 @@
     <Compile Include="AerolineaPorPais.aspx.designer.cs">
       <DependentUpon>AerolineaPorPais.aspx</DependentUpon>
     </Compile>
-    <Content Include="App_Code\Captcha.cs" />
+    <Compile Include="App_Code\CaptchaValidate.cs" />
+    <Compile Include="App_Code\FacebookUser.cs" />
     <Compile Include="CompraBoletos.aspx.cs">
       <DependentUpon>CompraBoletos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

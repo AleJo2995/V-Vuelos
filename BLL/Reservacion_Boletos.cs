@@ -29,9 +29,9 @@ namespace BLL
             set { _id_consecutivo = value; }
         }
 
-        private int _usuario;
+        private string _usuario;
 
-        public int usuario
+        public string usuario
         {
             get { return _usuario; }
             set { _usuario = value; }
@@ -140,7 +140,7 @@ namespace BLL
                     {
                         _id = Convert.ToInt32(ds.Tables[0].Rows[0]["ID"]);
                         _id_consecutivo = Convert.ToInt32(ds.Tables[0].Rows[0]["ID_Consecutivo"]);
-                        _usuario = Convert.ToInt32(ds.Tables[0].Rows[0]["Usuario"]);
+                        _usuario = ds.Tables[0].Rows[0]["Usuario"].ToString();
                         _booking_id = Convert.ToInt32(ds.Tables[0].Rows[0]["Booking_id"]);
                         _vuelo = Convert.ToInt32(ds.Tables[0].Rows[0]["Vuelo"]);
                         _cantidad_boletos = Convert.ToInt32(ds.Tables[0].Rows[0]["Cantidad_boletos"]);
@@ -172,7 +172,7 @@ namespace BLL
             
                 ParamStruct[] parametros = new ParamStruct[5];
                 cls_DAL.agregar_datos_estructura_parametros(ref parametros, 0, "@ID_Consecutivo", SqlDbType.Int, _id_consecutivo);
-                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 1, "@Usuario", SqlDbType.Int, _usuario);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 1, "@Usuario", SqlDbType.VarChar, _usuario);
                 cls_DAL.agregar_datos_estructura_parametros(ref parametros, 2, "@Booking_id", SqlDbType.Int, _booking_id);
                 cls_DAL.agregar_datos_estructura_parametros(ref parametros, 3, "@Vuelo", SqlDbType.Int, _vuelo);
                 cls_DAL.agregar_datos_estructura_parametros(ref parametros, 4, "@Cantidad_boletos", SqlDbType.Int, _cantidad_boletos);
@@ -216,7 +216,7 @@ namespace BLL
                 ParamStruct[] parametros = new ParamStruct[6];
                 cls_DAL.agregar_datos_estructura_parametros(ref parametros, 0, "@ID", SqlDbType.Int, _id);
                 cls_DAL.agregar_datos_estructura_parametros(ref parametros, 1, "@ID_Consecutivo", SqlDbType.Int, _id_consecutivo);
-                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 2, "@Usuario", SqlDbType.Int, _usuario);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 2, "@Usuario", SqlDbType.VarChar, _usuario);
                 cls_DAL.agregar_datos_estructura_parametros(ref parametros, 3, "@Booking_id", SqlDbType.Int, _booking_id);
                 cls_DAL.agregar_datos_estructura_parametros(ref parametros, 4, "@Vuelo", SqlDbType.Int, _vuelo);
                 cls_DAL.agregar_datos_estructura_parametros(ref parametros, 5, "@Cantidad_boletos", SqlDbType.Int, _cantidad_boletos);
