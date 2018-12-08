@@ -79,6 +79,10 @@ span.crt {
 
     <div id="fb-root"></div>
     <a href="#" onclick="loginByFacebook();">Login with Facebook</a>
+    <br />
+    <a href="#" onclick="">Login with Twitter</a>
+    <br />
+
 
     <%-- now this is some required facebook's JS, two things to pay attention to
     1. setting the ApplicationID, To make this project work you have to edit "callback.aspx.cs" and put your facebook-app-key there
@@ -131,13 +135,13 @@ span.crt {
 
   
 
-  <div class="imgcontainer">
-    <img src="Imagenes/Ulacit.png" alt="Avatar" class="avatar">
+  <div class="container" align="center">
+    <img class="mr-3" src="Imagenes/Ulacit.png" alt="Avatar" class="avatar">
   </div>
 
-  <div class="container">
+  <div class="container-fuild" aria-required>
     
-  <asp:Login ID="Login1" runat="server" DisplayRememberMe="False" Width="1002px" DestinationPageUrl="~/Default.aspx" >
+  <asp:Login ID="Login1" runat="server" DisplayRememberMe="False" Width="1002px" DestinationPageUrl="~/Default.aspx" required>
       </asp:Login> 
       <div class="g-recaptcha" data-sitekey="6LdtcH8UAAAAAKETa_PKgf8R8YA6j2siw4gkUyNO"></div>
       <asp:Button ID="btn_captcha" runat="server" Text="Validar captcha" OnClick="btn_captcha_Click" />
@@ -145,7 +149,7 @@ span.crt {
   </div>
 
 
-  <div class="container" style="background-color:#f1f1f1">
+  <div class="container-fluid" style="background-color:#f1f1f1">
      <span class="crt"><a href="/CrearUsuario.aspx?cod=1">Crear usuario</a></span>
      <span class="psw"> <a href="/RecuperarContraseña.aspx>"> ¿Olvidó la contraseña? </a></span>
   </div>
