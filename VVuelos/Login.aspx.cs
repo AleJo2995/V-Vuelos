@@ -113,7 +113,7 @@ namespace VVuelos
             {
 
                 Login1.Visible = true;
-      
+                captchaDiv.Visible = false;
             }
             else
             {

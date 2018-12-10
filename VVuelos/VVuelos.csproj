@@ -277,7 +277,6 @@
     <Content Include="AdquisicionBoletos.aspx" />
     <Content Include="Paises.aspx" />
     <Content Include="Puertas.aspx" />
-    <Content Include="RecuperarContraseña.aspx" />
     <Content Include="ReservacionBoletos.aspx" />
     <Content Include="Salidas.aspx" />
     <Content Include="Scripts\bootstrap.js" />
@@ -491,13 +490,6 @@
     <Compile Include="Puertas.aspx.designer.cs">
       <DependentUpon>Puertas.aspx</DependentUpon>
     </Compile>
-    <Compile Include="RecuperarContraseña.aspx.cs">
-      <DependentUpon>RecuperarContraseña.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="RecuperarContraseña.aspx.designer.cs">
-      <DependentUpon>RecuperarContraseña.aspx</DependentUpon>
-    </Compile>
     <Compile Include="ReservacionBoletos.aspx.cs">
       <DependentUpon>ReservacionBoletos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -565,6 +557,9 @@
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />

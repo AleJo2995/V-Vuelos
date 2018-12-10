@@ -6,6 +6,8 @@
             <asp:BoundField DataField="id" HeaderText="ID" />
             <asp:BoundField DataField="descripcion" HeaderText="Descripcion" />
             <asp:BoundField DataField="consecutivo" HeaderText="Consecutivo" />
+                        <asp:BoundField DataField="rango_inicial" HeaderText="Consecutivo" />
+                        <asp:BoundField DataField="rango_final" HeaderText="Consecutivo" />
             <asp:HyperLinkField DataNavigateUrlFields="id" DataNavigateUrlFormatString="AdministrarConsecutivo?cod={0}" Text="Editar" />
         </Columns>
     </asp:GridView>

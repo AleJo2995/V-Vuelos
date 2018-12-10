@@ -29,6 +29,14 @@ namespace BLL
             set { _consecutivo = value; }
         }
 
+        private int _comparador;
+
+        public int comparador
+        {
+            get { return _comparador; }
+            set { _comparador = value; }
+        }
+
         private string _descripcion;
 
         public string descripcion
@@ -147,6 +155,43 @@ namespace BLL
                     else
                     {
                         _descripcion = "Error";
+                        _num_error = numero_error;
+                        _mensaje = mensaje_error;
+                    }
+                }
+            }
+        }
+
+        public void numero_consecutivos(int consecutivo)
+        {
+            conexion = cls_DAL.trae_conexion("V-Vuelos", ref mensaje_error, ref numero_error);
+            if (conexion == null)
+            {
+                //insertar en la table de errores
+                HttpContext.Current.Response.Redirect("Error.aspx?error=" + numero_error.ToString() + "&men=" + mensaje_error);
+            }
+            else
+            {
+                sql = "usp_numero_consecutivo";
+                ParamStruct[] parametros = new ParamStruct[1];
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 0, "@Consecutivo", SqlDbType.Int, consecutivo);
+                ds = cls_DAL.ejecuta_dataset(conexion, sql, true, parametros, ref mensaje_error, ref numero_error);
+                if (numero_error != 0)
+                {
+                    //insertar en la table de errores
+                    HttpContext.Current.Response.Redirect("Error.aspx?error=" + numero_error.ToString() + "&men=" + mensaje_error);
+                }
+                else
+                {
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        
+                        _comparador = Convert.ToInt32(ds.Tables[0].Rows[0]["Consecutivo"]);
+                  
+                    }
+                    else
+                    {
+                 
                         _num_error = numero_error;
                         _mensaje = mensaje_error;
                     }

@@ -29,6 +29,7 @@ namespace VVuelos
         protected void MC_Bitacora_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             GV_Bitacora.PageIndex = e.NewPageIndex;
+            Traer_Bitacora();
         }
     }
 }
