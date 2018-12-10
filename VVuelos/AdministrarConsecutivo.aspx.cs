@@ -16,8 +16,13 @@ namespace VVuelos
         {
             if (!Page.IsPostBack)
             {
-                ddl_descripcion.DataSource = consecutivo.lista_consecutivos();
-                ddl_descripcion.DataBind();
+                ddl_descripcion.Items.Add(new ListItem("Países", "Países"));
+                ddl_descripcion.Items.Add(new ListItem("Aerolíneas", "Aerolíneas"));
+                ddl_descripcion.Items.Add(new ListItem("Puertas", "Puertas"));
+                ddl_descripcion.Items.Add(new ListItem("Compra de Boletos", "Compra de Boletos"));
+                ddl_descripcion.Items.Add(new ListItem("Reservación de Boletos", "Reservación de Boletos"));
+                ddl_descripcion.Items.Add(new ListItem("Vuelos", "Vuelos"));
+
                 if (Convert.ToInt32(Request.QueryString["cod"]) > 0)
                 {
                     this.carga_datos(Convert.ToInt32(Request.QueryString["cod"]));
@@ -56,11 +61,15 @@ namespace VVuelos
 
         protected void btn_guardar_Click(object sender, EventArgs e)
         {
-            BLL.Consecutivo consecutivo = new BLL.Consecutivo();
-            consecutivo.id = Convert.ToInt32(Request.QueryString["cod"]);
-            consecutivo.consecutivo = Int32.Parse(txt_consecutivo.Text);
-            consecutivo.descripcion = ddl_descripcion.Text;
-
+            bool validacion = true;
+            lbl_rango.Text = "";
+            
+            
+            if (Int32.Parse(txt_rango_fin.Text) < Int32.Parse(txt_rango_ini.Text))
+            {
+                validacion = false;
+                lbl_rango.Text = "Rango inicial debe ser menor a rango final.";
+            }
             if (string.IsNullOrWhiteSpace(txt_prefijo.Text))
             {
                 consecutivo.prefijo = null;
@@ -89,23 +98,51 @@ namespace VVuelos
             }
 
 
+            if (validacion)
+            {
+                consecutivo.id = Convert.ToInt32(Request.QueryString["cod"]);
+                consecutivo.consecutivo = Int32.Parse(txt_consecutivo.Text);
+                consecutivo.descripcion = ddl_descripcion.SelectedItem.ToString();
 
-            if (Convert.ToInt32(Request.QueryString["cod"]) > 0)
+                if (Convert.ToInt32(Request.QueryString["cod"]) > 0)
             {
                 consecutivo.modifica_consecutivos();
+                lbl_mensaje.Text = "Consecutivo modificado con éxito.";
+                }
+                else
+            {
+
+                consecutivo.numero_consecutivos(Int32.Parse(txt_consecutivo.Text));
+
+                    int comparador = consecutivo.comparador;
+                    if (comparador == Int32.Parse(txt_consecutivo.Text))
+                    {
+                        lbl_mensaje.Text = "Este consecutivo ya existe.";
+                    }
+                    else
+                    {
+                        consecutivo.agregar_consecutivos();
+                        lbl_mensaje.Text = "Consecutivo insertado con éxito.";
+                    }
+
+
+                    
+            }
+            
             }
             else
             {
-                consecutivo.agregar_consecutivos();
+                lbl_mensaje.Text = "Debe insertar todos los datos";
             }
 
 
-        }
-            
 
-  
+}
 
-        protected void btn_cancelar_Click(object sender, EventArgs e)
+
+
+
+protected void btn_cancelar_Click(object sender, EventArgs e)
         {
 
             Response.Redirect("Default.aspx");

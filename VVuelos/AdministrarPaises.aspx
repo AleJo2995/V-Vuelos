@@ -10,8 +10,7 @@
         <td>Código País:</td>
         <td>
             <asp:TextBox ID="txt_codigo_pais" runat="server"></asp:TextBox>
-			<asp:RequiredFieldValidator ID="txt_codigo_pais" runat="server" ControlToValidate="txt_codigo_pais" ErrorMessage="*" ForeColor="Red" SetFocusOnError="True">Este campo es requerido</asp:RequiredFieldValidator>
-        </td>
+
     </tr>
     <tr>
         <td>&nbsp;</td>
@@ -35,10 +34,15 @@
             <br />
         </td>
         <td>
+             <asp:Label ID="lbl_mensaje" runat="server" ForeColor="Red"></asp:Label>
+             &nbsp;&nbsp;&nbsp;
             <asp:Button ID="btn_guardar" runat="server" OnClick="btn_guardar_Click" Text="Guardar" />
             &nbsp;&nbsp;&nbsp;
             <asp:Button ID="btn_cancelar" runat="server" OnClick="btn_cancelar_Click" Text="Cancelar" />
-       
+              &nbsp;&nbsp;&nbsp;
+            <asp:Button ID="btn_borrar" runat="server" OnClick="btn_borrar_Click" Text="Borrar" />
+             &nbsp;&nbsp;&nbsp;
+              <asp:Button ID="btn_eliminar" runat="server" OnClick="btn_eliminar_Click" Text="Eliminar" />
             <asp:FileUpload id="FileUploadControl" runat="server" />
     <asp:Label runat="server" id="StatusLabel" text="Upload status: " />    
         </td>
@@ -46,3 +50,5 @@
 </table>
 
 </asp:Content>
+
+

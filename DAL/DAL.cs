@@ -10,8 +10,7 @@ namespace DAL
 
 {
 
-  
-
+ 
     public struct ParamStruct
     {
         public string Nombre_Parametro;
@@ -21,13 +20,8 @@ namespace DAL
 
     public static class cls_DAL
     {
-        /// <summary>
-        /// Inicializa una conexion contra un servidor de base de datos, retorna un sqlconnection si todo esta bien y null si fallo
-        /// </summary>
-        /// <param name="nombre_conexion">nombre de la cadena conexion a ejecutar</param>
-        /// <param name="mensaje_error">mensaje de error o confirmacion</param>
-        /// <param name="numero_error">numero del error</param>
-        /// <returns></returns>
+      
+
         public static SqlConnection trae_conexion(string nombre_conexion, ref string mensaje_error, ref int numero_error)
         {
             SqlConnection cnn;
@@ -57,12 +51,8 @@ namespace DAL
 
         }
 
-        /// <summary>
-        /// realiza conexion contra la base de datos
-        /// </summary>
-        /// <param name="conexion">variable estilo sqlconnection que contiene la cadena de conexion</param>
-        /// <param name="mensaje_error">mensaje de error o confirmacion</param>
-        /// <param name="numero_error">numero de error</param>
+        
+
         public static void conectar(SqlConnection conexion, ref string mensaje_error, ref int numero_error)
         {
             try
@@ -78,11 +68,7 @@ namespace DAL
             }
         }
 
-        /// <summary>
-        /// realiza desconeccion contra la base de datos
-        /// </summary>
-        /// <param name="conexion">variable estilo sqlconnection que contiene la cadena de conexion</param>
-        /// <param name="mensaje_error">mensaje de error o confirmacion</param>
+     
         public static void desconectar(SqlConnection conexion, ref string mensaje_error, ref int numero_error)
         {
             try
@@ -104,15 +90,8 @@ namespace DAL
                 numero_error = ex.Number;
             }
         }
-        /// <summary>
-        /// realiza la carga de un dataset de solo lectura.
-        /// </summary>
-        /// <param name="sql">Sentencia sql o nombre del SP</param>
-        /// <param name="conexion">variable donde recide la conexion</param>        
-        /// <param name="numero_error">numero de error</param>
-        /// <param name="mensaje_error">mensaje de error</param>
-        /// <param name="es_procedimiento_almacenado">indica si se ejecuta un procedimiento almacenado</param>
-        ///            
+     
+        
         public static DataSet ejecuta_dataset(SqlConnection conexion, string sql, bool es_procedimiento_almacenado, ref string mensaje_error, ref int numero_error)
         {
             SqlDataAdapter sql_data_adapter;
@@ -137,16 +116,7 @@ namespace DAL
             }
         }
 
-        /// <summary>
-        /// realiza la carga de un dataset con parametros.
-        /// </summary>
-        /// <param name="sql">Sentencia sql o nombre del procedimiento almacenado</param>
-        /// <param name="conexion">variable donde recide la conexion</param>        
-        /// <param name="numero_error">numero de error</param>
-        /// <param name="mensaje_error">mensaje de error</param>
-        /// <param name="parametros">lista de parametros que necesita el procedimiento almacenado o sentencia SQL para su ejecución</param>        
-        /// <param name="es_procedimiento_almacenado">indica si se ejecuta un procedimiento almacenado</param>        
-        ///
+       
         public static DataSet ejecuta_dataset(SqlConnection conexion, string sql, bool es_procedimiento_almacenado, ParamStruct[] parametros, ref string mensaje_error, ref int numero_error)
         {
             SqlDataAdapter sql_data_adapter;
@@ -174,13 +144,7 @@ namespace DAL
                 return null;
             }
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sql_data_reader"></param>
-        /// <param name="sql_command"></param>
-        /// <param name="mensaje_error"></param>
-        /// <param name="numero_error"></param>
+       
         public static void ejecuta_datareader(ref SqlDataReader sql_data_reader, SqlCommand sql_command, ref string mensaje_error, ref int numero_error)
         {
             try
@@ -195,14 +159,8 @@ namespace DAL
                 mensaje_error = ex.Message;
             }
         }
-        /// <summary>
-        /// ejecuta una sentecia de tipo SQL contra la base de datos
-        /// </summary>
-        /// <param name="conexion">variable donde recide la conexion</param>
-        /// <param name="sql">sentencia sql o nombre del procedimiento almacenado</param>
-        /// <param name="es_procedimiento_almacenado">indica si se ejecuta un procedimiento almacenado</param>
-        /// <param name="mensaje_error">mensaje de error</param>
-        /// <param name="numero_error">numero de error</param>        
+       
+        
         public static void ejecuta_sqlcommand(SqlConnection conexion, string sql, bool es_procedimiento_almacenado, ref string mensaje_error, ref int numero_error)
         {
             SqlCommand sql_command;
@@ -224,16 +182,7 @@ namespace DAL
                 numero_error = ex.Number;
             }
         }
-        /// <summary>
-        /// ejecuta una sentecia de tipo SQL contra la base de datos
-        /// </summary>
-        /// <param name="conexion">variable donde recide la conexion</param>
-        /// <param name="sql">sentencia sql o nombre del procedimiento almacenado</param>
-        /// <param name="es_procedimiento_almacenado">indica si se ejecuta un procedimiento almacenado</param>
-        /// <param name="parametros">lista de parametros que necesita el procedimiento almacenado o sentencia SQL para su ejecucion</param>
-        /// <param name="mensaje_error">mensaje de error</param>
-        /// <param name="numero_error">numero de error</param>  
-        /// 
+   
 
         public static void ejecuta_sqlcommand(SqlConnection conexion, string sql, bool es_procedimiento_almacenado, ParamStruct[] parametros, ref string mensaje_error, ref int numero_error)
         {

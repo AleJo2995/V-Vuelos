@@ -77,11 +77,7 @@ span.crt {
     
     <script src='https://www.google.com/recaptcha/api.js'></script>
 
-    <div id="fb-root"></div>
-    <a href="#" onclick="loginByFacebook();">Login with Facebook</a>
-    <br />
-    <a href="#" onclick="">Login with Twitter</a>
-    <br />
+
 
 
     <%-- now this is some required facebook's JS, two things to pay attention to
@@ -141,18 +137,26 @@ span.crt {
 
   <div class="container-fuild" aria-required>
     
-  <asp:Login ID="Login1" runat="server" DisplayRememberMe="False" Width="1002px" DestinationPageUrl="~/Default.aspx" required>
+
       </asp:Login> 
-      <div class="g-recaptcha" data-sitekey="6LdtcH8UAAAAAKETa_PKgf8R8YA6j2siw4gkUyNO"></div>
-      <asp:Button ID="btn_captcha" runat="server" Text="Validar captcha" OnClick="btn_captcha_Click" />
-  <asp:Label ID="lbl_captcha" runat="server" ForeColor="Red"></asp:Label>
-  </div>
+
+      <div runat="server" id="captchaDiv" Visible="true">
+      <div class="g-recaptcha" data-sitekey="6LdtcH8UAAAAAKETa_PKgf8R8YA6j2siw4gkUyNO" align="center"></div>
+      </div>
+
+      </div>
+     <div runat="server" id="buttoncaptcha"  align="center">
+          <asp:Button ID="btn_captcha" runat="server" Text="Validar captcha" OnClick="btn_captcha_Click"  />
+  <asp:Label ID="lbl_captcha" runat="server" ForeColor="Red" align="center"></asp:Label>
+     </div>
 
 
   <div class="container-fluid" style="background-color:#f1f1f1">
      <span class="crt"><a href="/CrearUsuario.aspx?cod=1">Crear usuario</a></span>
-     <span class="psw"> <a href="/RecuperarContraseña.aspx>"> ¿Olvidó la contraseña? </a></span>
+     
   </div>
+
+    
 </form>
 
 </body>

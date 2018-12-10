@@ -17,6 +17,11 @@ namespace VVuelos
             }
         }
 
+        protected void btn_nuevo_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AdministrarPaises.aspx");
+        }
+
         private void Traer_Bitacora()
         {
 
@@ -26,8 +31,9 @@ namespace VVuelos
 
         }
 
-        protected void MC_Bitacora_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        protected void GV_Bitacora_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
+            Traer_Bitacora();
             GV_Bitacora.PageIndex = e.NewPageIndex;
         }
     }

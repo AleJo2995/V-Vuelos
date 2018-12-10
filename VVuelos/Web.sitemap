@@ -5,7 +5,7 @@
       <siteMapNode url="" title="Usuarios" description="Usuarios">
         <siteMapNode url="~/CrearUsuario.aspx" title="Crear Usuarios" description="Crear Usuarios" />
         <siteMapNode url="~/VerUsuario.aspx" title="Asignar Roles" description="Asignar Roles" />
-        <siteMapNode url="~/CambiarContraseña.aspx" title="Cambiar Contraseña" description="Cambiar Contraseña" />
+
 
       </siteMapNode>
     </siteMapNode>
@@ -23,7 +23,7 @@
       <siteMapNode url="~/Entradas.aspx" title="Entradas de vuelos" description="Entradas de vuelos" />
       <siteMapNode url="~/Salidas.aspx" title="Salidas de vuelos" description="Salidas de vuelos" />
       <siteMapNode url="~/LoginBoletos.aspx" title="Adquisición de boletos" description="Adquisición de boletos" />
-      
+      <siteMapNode url="~/CambiarContraseña.aspx" title="Cambiar Contraseña" description="Cambiar Contraseña" />
     </siteMapNode>
 
     

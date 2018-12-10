@@ -14,6 +14,7 @@ namespace VVuelos
 {
     public partial class Salidas : System.Web.UI.Page
     {
+        BLL.Vuelo vuelo = new BLL.Vuelo();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -27,10 +28,10 @@ namespace VVuelos
         
         private void Traer_Vuelos()
         {
-            System.Threading.Thread.Sleep(1400);
-            BLL.Vuelo vuelo = new BLL.Vuelo();
-            MC_Salidas.DataSource = vuelo.carga_vuelos().Tables[0];
-            MC_Salidas.DataBind();
+          
+          
+            GV_Salidas.DataSource = vuelo.carga_vuelos_salida().Tables[0];
+            GV_Salidas.DataBind();
 
 
 
@@ -38,7 +39,8 @@ namespace VVuelos
 
         protected void MC_Salidas_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            MC_Salidas.PageIndex = e.NewPageIndex;
+            GV_Salidas.PageIndex = e.NewPageIndex;
+            Traer_Vuelos();
         }
 
 

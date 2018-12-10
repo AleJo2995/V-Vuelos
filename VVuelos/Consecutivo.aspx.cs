@@ -42,6 +42,7 @@ namespace VVuelos
         protected void MC_Consecutivo_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             MC_Consecutivo.PageIndex = e.NewPageIndex;
+            Traer_Consecutivos();
         }
 
     }

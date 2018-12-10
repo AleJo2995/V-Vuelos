@@ -22,7 +22,8 @@ namespace VVuelos
         public const string FaceBookAppKey = "3fce950271a7cbbe38aaf7c7e5f96ae4";
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            captchaDiv.Visible = true;
+            buttoncaptcha.Visible = true;
             Login1.Visible = false;
             if (Request.IsAuthenticated && !string.IsNullOrEmpty(Request.QueryString["ReturnUrl"]))
                 Response.Redirect("~/Default.aspx");
@@ -113,7 +114,8 @@ namespace VVuelos
             {
 
                 Login1.Visible = true;
-      
+                captchaDiv.Visible = false;
+                buttoncaptcha.Visible = false;
             }
             else
             {

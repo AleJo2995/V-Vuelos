@@ -22,6 +22,15 @@ namespace VVuelos {
         protected global::System.Web.UI.WebControls.DropDownList ddl_destino;
         
         /// <summary>
+        /// Control btn_select.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_select;
+        
+        /// <summary>
         /// Control txt_boletos.
         /// </summary>
         /// <remarks>
@@ -40,6 +49,60 @@ namespace VVuelos {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_boletos;
         
         /// <summary>
+        /// Control lbl_precio_string.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_precio_string;
+        
+        /// <summary>
+        /// Control lbl_precio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_precio;
+        
+        /// <summary>
+        /// Control lbl_cantidad_string.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_cantidad_string;
+        
+        /// <summary>
+        /// Control lbl_cantidad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_cantidad;
+        
+        /// <summary>
+        /// Control btn_pago_tarjeta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_pago_tarjeta;
+        
+        /// <summary>
+        /// Control btn_pago_easy_pay.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_pago_easy_pay;
+        
+        /// <summary>
         /// Control btn_reservacion.
         /// </summary>
         /// <remarks>
@@ -49,15 +112,6 @@ namespace VVuelos {
         protected global::System.Web.UI.WebControls.Button btn_reservacion;
         
         /// <summary>
-        /// Control btn_compra.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_compra;
-        
-        /// <summary>
         /// Control btn_cancelar.
         /// </summary>
         /// <remarks>
@@ -65,5 +119,14 @@ namespace VVuelos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_cancelar;
+        
+        /// <summary>
+        /// Control lbl_mensaje.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_mensaje;
     }
 }

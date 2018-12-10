@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -9,62 +11,66 @@ namespace VVuelos
 {
     public partial class AdquisicionBoletos : System.Web.UI.Page
     {
+
+        
+        BLL.Vuelo vuelo = new BLL.Vuelo();
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
             if (!Page.IsPostBack)
             {
-                this.Lista_aerolineas();
-            }
 
-        }
-
-        private void Lista_aerolineas()
-        {
-            BLL.Aerolinea aerolinea = new BLL.Aerolinea();
-        
-
-        }
-        protected void GV_Aerolinea_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-
-                LinkButton db = (LinkButton)e.Row.Cells[3].Controls[0];
-                string nombre = e.Row.Cells[1].Text;
-                db.OnClientClick = string.Format("return confirm('Confima eliminar esta aerolínea: {0}?');", nombre);
+                    this.carga_datos();
+                txt_boletos.Text = "0";
+                txt_boletos.ReadOnly = true;
+                   
             }
         }
-        protected void GV_Aerolinea_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-         
-            this.Lista_aerolineas();
-        }
 
-        protected void GV_Aerolinea_RowCommand(object sender, GridViewCommandEventArgs e)
+        private void carga_datos()
         {
 
-            BLL.Aerolinea aerolinea = new BLL.Aerolinea();
-            if (e.CommandName.Equals("Eliminar"))
-            {
-
-
-                int fila = Convert.ToInt32(e.CommandArgument);
-               
-              
-
-              
-
-
-            }
-
-
+          
+            ddl_destino.DataSource = vuelo.carga_vuelos_salida();
+            ddl_destino.DataBind();
+       
         }
 
-        protected void btn_nuevo_Click(object sender, EventArgs e)
+        protected void btn_select_Click(object sender, EventArgs e)
         {
-            Response.Redirect("NuevaAerolinea.aspx?cod=0");
+            int codigo = Convert.ToInt32(ddl_destino.SelectedValue);
+            vuelo.datos_vuelos(codigo);
+            lbl_cantidad_string.Text = "Cantidad de boletos disponibles";
+            lbl_cantidad.Text = vuelo.numero_boletos.ToString();
+            lbl_precio_string.Text = "Precio unitario";
+            lbl_precio.Text = vuelo.precio.ToString();
+            txt_boletos.ReadOnly = false;
         }
+
+        protected void btn_pago_tarjeta_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("CompraBoletos.aspx");
+        }
+
+        protected void btn_pago_easy_pay_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("CompraBoletos.aspx");
+        }
+
+        protected void btn_cancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Default.aspx");
+        }
+
+        protected void btn_reservacion_Click(object sender, EventArgs e)
+        {
+            int codigo = Convert.ToInt32(ddl_destino.SelectedValue);
+            vuelo.datos_vuelos(codigo);
+            lbl_cantidad.Text = vuelo.numero_boletos.ToString();
+            lbl_precio.Text = vuelo.precio.ToString();
+        }
+
 
     }
 }

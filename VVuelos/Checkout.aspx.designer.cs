@@ -10,6 +10,6 @@
 namespace VVuelos {
     
     
-    public partial class RecuperarContraseña {
+    public partial class Checkout {
     }
 }

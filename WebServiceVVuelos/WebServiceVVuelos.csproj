@@ -64,8 +64,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\Newtonsoft.Json.dll" />
-    <Content Include="Service.svc" />
-    <Content Include="Web.config" />
+    <Content Include="Service.svc">
+      <BrowseToURL>~/Service.cs</BrowseToURL>
+    </Content>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Code\IService.cs" />

@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace VVuelos
 {
-    public partial class RecuperarContraseña : System.Web.UI.Page
+    public partial class Checkout : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
