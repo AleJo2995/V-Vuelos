@@ -10,9 +10,7 @@
         <td>Código País:</td>
         <td>
             <asp:TextBox ID="txt_codigo_pais" runat="server"></asp:TextBox>
-            <asp:CompareValidator runat="server" Operator="DataTypeCheck" Type="Integer" 
- ControlToValidate="txt_codigo_pais" ErrorMessage="Debe ingresar un número." />
-            </td>
+
     </tr>
     <tr>
         <td>&nbsp;</td>
@@ -22,6 +20,7 @@
         <td>Nombre:</td>
         <td>
             <asp:TextBox ID="txt_nombre" runat="server"></asp:TextBox>
+			<asp:RequiredFieldValidator ID="txt_nombre" runat="server" ControlToValidate="txt_nombre" ErrorMessage="*" ForeColor="Red" SetFocusOnError="True">Este campo es requerido</asp:RequiredFieldValidator>
         </td>
     </tr>
     <tr>
