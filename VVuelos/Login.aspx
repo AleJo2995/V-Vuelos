@@ -79,6 +79,7 @@ span.crt {
 
 
 
+
     <%-- now this is some required facebook's JS, two things to pay attention to
     1. setting the ApplicationID, To make this project work you have to edit "callback.aspx.cs" and put your facebook-app-key there
     2. Adjust the permissions you want to get from user, set that in scope options below. --%>
@@ -130,13 +131,13 @@ span.crt {
 
   
 
-  <div class="imgcontainer">
-    <img src="Imagenes/Ulacit.png" alt="Avatar" class="avatar">
+  <div class="container" align="center">
+    <img class="mr-3" src="Imagenes/Ulacit.png" alt="Avatar" class="avatar">
   </div>
 
-  <div class="container">
+  <div class="container-fuild" aria-required>
     
-  <asp:Login ID="Login1" runat="server" DisplayRememberMe="False" Width="954px" DestinationPageUrl="~/Default.aspx" >
+
       </asp:Login> 
 
       <div runat="server" id="captchaDiv" Visible="true">
@@ -150,7 +151,7 @@ span.crt {
      </div>
 
 
-  <div class="container" style="background-color:#f1f1f1">
+  <div class="container-fluid" style="background-color:#f1f1f1">
      <span class="crt"><a href="/CrearUsuario.aspx?cod=1">Crear usuario</a></span>
      
   </div>
