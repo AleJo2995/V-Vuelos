@@ -33,6 +33,7 @@ namespace VVuelos
 
         protected void MC_Paises_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
+            Traer_Paises();
             MC_Paises.PageIndex = e.NewPageIndex;
         }
     }

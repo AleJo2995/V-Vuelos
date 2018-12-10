@@ -144,7 +144,7 @@ span.crt {
       </div>
 
       </div>
-     <div align="center">
+     <div runat="server" id="buttoncaptcha"  align="center">
           <asp:Button ID="btn_captcha" runat="server" Text="Validar captcha" OnClick="btn_captcha_Click"  />
   <asp:Label ID="lbl_captcha" runat="server" ForeColor="Red" align="center"></asp:Label>
      </div>

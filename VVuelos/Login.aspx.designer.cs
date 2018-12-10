@@ -40,6 +40,15 @@ namespace VVuelos {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl captchaDiv;
         
         /// <summary>
+        /// Control buttoncaptcha.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl buttoncaptcha;
+        
+        /// <summary>
         /// Control btn_captcha.
         /// </summary>
         /// <remarks>

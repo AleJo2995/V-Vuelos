@@ -173,7 +173,10 @@
     <Content Include="AdministrarMetodosPago.aspx" />
     <Content Include="AdministrarPaises.aspx" />
     <Content Include="AdministrarPuertas.aspx" />
+    <Content Include="AdquisicionBoletos.aspx" />
     <Content Include="AerolineaPorPais.aspx" />
+    <Content Include="Bitacora.aspx" />
+    <Content Include="Checkout.aspx" />
     <Content Include="CompraBoletos.aspx" />
     <Content Include="DetallesBitacora.aspx" />
     <Content Include="LoginBoletos.aspx" />
@@ -236,7 +239,6 @@
     <Content Include="bin\VVuelos.dll" />
     <Content Include="bin\VVuelos.pdb" />
     <Content Include="bin\WebGrease.dll" />
-    <Content Include="Bitacora.aspx" />
     <Content Include="CambiarContraseña.aspx" />
     <Content Include="Consecutivo.aspx" />
     <Content Include="Contact.aspx" />
@@ -274,7 +276,6 @@
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Login.aspx" />
     <Content Include="AdministrarConsecutivo.aspx" />
-    <Content Include="AdquisicionBoletos.aspx" />
     <Content Include="Paises.aspx" />
     <Content Include="Puertas.aspx" />
     <Content Include="ReservacionBoletos.aspx" />
@@ -342,6 +343,13 @@
     <Compile Include="AdministrarPuertas.aspx.designer.cs">
       <DependentUpon>AdministrarPuertas.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AdquisicionBoletos.aspx.cs">
+      <DependentUpon>AdquisicionBoletos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdquisicionBoletos.aspx.designer.cs">
+      <DependentUpon>AdquisicionBoletos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AerolineaPorPais.aspx.cs">
       <DependentUpon>AerolineaPorPais.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -351,6 +359,20 @@
     </Compile>
     <Compile Include="App_Code\CaptchaValidate.cs" />
     <Compile Include="App_Code\FacebookUser.cs" />
+    <Compile Include="Bitacora.aspx.cs">
+      <DependentUpon>Bitacora.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Bitacora.aspx.designer.cs">
+      <DependentUpon>Bitacora.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Checkout.aspx.cs">
+      <DependentUpon>Checkout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Checkout.aspx.designer.cs">
+      <DependentUpon>Checkout.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CompraBoletos.aspx.cs">
       <DependentUpon>CompraBoletos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -395,13 +417,6 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Bitacora.aspx.cs">
-      <DependentUpon>Bitacora.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bitacora.aspx.designer.cs">
-      <DependentUpon>Bitacora.aspx</DependentUpon>
-    </Compile>
     <Compile Include="CambiarContraseña.aspx.cs">
       <DependentUpon>CambiarContraseña.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -467,13 +482,6 @@
     </Compile>
     <Compile Include="AdministrarConsecutivo.aspx.designer.cs">
       <DependentUpon>AdministrarConsecutivo.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="AdquisicionBoletos.aspx.cs">
-      <DependentUpon>AdquisicionBoletos.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AdquisicionBoletos.aspx.designer.cs">
-      <DependentUpon>AdquisicionBoletos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Paises.aspx.cs">
       <DependentUpon>Paises.aspx</DependentUpon>
@@ -553,6 +561,9 @@
       <Project>{e544810d-bf9f-4b6e-82f9-b8174377e7b1}</Project>
       <Name>BLL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

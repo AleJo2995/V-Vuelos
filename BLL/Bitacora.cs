@@ -29,9 +29,9 @@ namespace BLL
             set { _usuario = value; }
         }
 
-        private string _fecha_hora;
+        private DateTime _fecha_hora;
 
-        public string fecha_hora
+        public DateTime fecha_hora
         {
             get { return _fecha_hora; }
             set { _fecha_hora = value; }
@@ -108,16 +108,10 @@ namespace BLL
             {
                 sql = "usp_consulta_bitacora";
                 ds = cls_DAL.ejecuta_dataset(conexion, sql, true, ref mensaje_error, ref numero_error);
-                if (numero_error != 0)
-                {
-                    //insertar en la table de errores
-                    HttpContext.Current.Response.Redirect("Error.aspx?error=" + numero_error.ToString() + "&men=" + mensaje_error);
-                    return null;
-                }
-                else
-                {
+           
+                
                     return ds;
-                }
+                
             }
 
         }
@@ -148,7 +142,7 @@ namespace BLL
                     {
                         _id = Convert.ToInt32(ds.Tables[0].Rows[0]["ID"]);
                         _usuario = ds.Tables[0].Rows[0]["Usuario"].ToString();
-                        _fecha_hora = ds.Tables[0].Rows[0]["Fecha_Hora"].ToString();
+                        _fecha_hora = Convert.ToDateTime(ds.Tables[0].Rows[0]["Fecha_Hora"].ToString());
                         _codigo_registro = Convert.ToInt32(ds.Tables[0].Rows[0]["Codigo_registro"]);
                         _tipo = ds.Tables[0].Rows[0]["Tipo"].ToString();
                         _descripcion = ds.Tables[0].Rows[0]["Descripcion"].ToString();

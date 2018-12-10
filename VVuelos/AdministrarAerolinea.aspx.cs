@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 using BLL;
-
+using System.IO;
 
 namespace VVuelos
 {
@@ -17,9 +17,12 @@ namespace VVuelos
     {
 
         BLL.Aerolinea aerolinea = new BLL.Aerolinea();
+        static String direccion;
+        static int id;
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            btn_eliminar.Visible = false;
             if (!Page.IsPostBack)
             {
               
@@ -38,8 +41,7 @@ namespace VVuelos
             {
                 txt_codigo.Text = aerolinea.codigo.ToString();
                 txt_codigo_pais.Text = aerolinea.codigo_pais.ToString();
-                txt_nombre.Text = aerolinea.nombre;
-                txt_direccion_imagen.Text = aerolinea.direccion_imagen;
+                txt_nombre.Text = aerolinea.nombre;   
                
             }
             else
@@ -55,13 +57,31 @@ namespace VVuelos
 
         protected void btn_guardar_Click(object sender, EventArgs e)
         {
+
+            bool validacion = true;
+            if (FileUploadControl.HasFile)
+            {
+                try
+                {
+                    string filename = Path.GetFileName(FileUploadControl.FileName);
+                    FileUploadControl.SaveAs(Server.MapPath("~/uploads/") + filename);
+                    string path = Server.MapPath("~/uploads/") + filename;
+                    direccion = "~/uploads/" + filename;
+                    StatusLabel.Text = "Imagen subida con éxito" + filename;
+                }
+                catch (Exception ex)
+                {
+                    StatusLabel.Text = "No se ha podido subir la imagen debido al siguiente error:: " + ex.Message;
+                }
+            }
+
+
             aerolinea.id= Convert.ToInt32(Request.QueryString["cod"]);
             aerolinea.id_consecutivo = 1;
             aerolinea.codigo = Convert.ToInt32(txt_codigo.Text);
             aerolinea.codigo_pais = Convert.ToInt32(txt_codigo_pais.Text);
             aerolinea.nombre = txt_nombre.Text;
-            aerolinea.direccion_imagen = txt_direccion_imagen.Text;
- 
+
             if (Convert.ToInt32(Request.QueryString["cod"]) > 0)
             {
                 aerolinea.modifica_aerolinea();
