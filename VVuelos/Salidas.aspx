@@ -11,6 +11,8 @@
             <asp:BoundField DataField="hora" HeaderText="Hora" />
             <asp:BoundField DataField="estado" HeaderText="Estado" />
             <asp:BoundField DataField="puerta" HeaderText="Puerta" />
+            <asp:BoundField DataField="precio" HeaderText="precio" />
+            <asp:BoundField DataField="numero_boletos" HeaderText="numero_boletos" />
         </Columns>
     </asp:GridView>
         

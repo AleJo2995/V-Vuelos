@@ -110,9 +110,9 @@ namespace BLL
             set { _numero_boletos = value; }
         }
 
-        private string _precio;
+        private decimal _precio;
 
-        public string precio
+        public decimal precio
         {
             get { return _precio; }
             set { _precio = value; }
@@ -206,7 +206,7 @@ namespace BLL
 
         }
 
-        public void datos_vuelos(int ID)
+        public void datos_vuelos(int Codigo)
         {
             conexion = cls_DAL.trae_conexion("V-Vuelos", ref mensaje_error, ref numero_error);
             if (conexion == null)
@@ -218,7 +218,7 @@ namespace BLL
             {
                 sql = "usp_info_vuelos";
                 ParamStruct[] parametros = new ParamStruct[1];
-                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 0, "@ID", SqlDbType.Int, ID);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 0, "@Codigo", SqlDbType.Int, Codigo);
                 ds = cls_DAL.ejecuta_dataset(conexion, sql, true, parametros, ref mensaje_error, ref numero_error);
                 if (numero_error != 0)
                 {
@@ -241,7 +241,7 @@ namespace BLL
                         _hora = ds.Tables[0].Rows[0]["Hora"].ToString();
                         _estado = ds.Tables[0].Rows[0]["Estado"].ToString();
                         _numero_boletos = Convert.ToInt32(ds.Tables[0].Rows[0]["Numero_boletos"]);
-                        _precio = ds.Tables[0].Rows[0]["Precio"].ToString();
+                        _precio = Convert.ToDecimal(ds.Tables[0].Rows[0]["Precio"].ToString());
                     }
                     else
                     {
@@ -279,7 +279,7 @@ namespace BLL
                 cls_DAL.agregar_datos_estructura_parametros(ref parametros, 8, "@Hora", SqlDbType.Time, _hora);
                 cls_DAL.agregar_datos_estructura_parametros(ref parametros, 9, "@Estado", SqlDbType.VarChar, _estado);
                 cls_DAL.agregar_datos_estructura_parametros(ref parametros, 10, "@Numero_boletos", SqlDbType.Int, _numero_boletos);
-                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 11, "@Precio", SqlDbType.VarChar, _precio);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 11, "@Precio", SqlDbType.Decimal, _precio);
                 cls_DAL.agregar_datos_estructura_parametros(ref parametros, 12, "@Puerta", SqlDbType.Int, _puerta);
                 cls_DAL.conectar(conexion, ref mensaje_error, ref numero_error);
                 cls_DAL.ejecuta_sqlcommand(conexion, sql, true, parametros, ref mensaje_error, ref numero_error);
@@ -331,7 +331,7 @@ namespace BLL
                 cls_DAL.agregar_datos_estructura_parametros(ref parametros, 9, "@Hora", SqlDbType.Time, _hora);
                 cls_DAL.agregar_datos_estructura_parametros(ref parametros, 10, "@Estado", SqlDbType.VarChar, _estado);
                 cls_DAL.agregar_datos_estructura_parametros(ref parametros, 11, "@Numero_boletos", SqlDbType.Int, _numero_boletos);
-                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 12, "@Precio", SqlDbType.VarChar, _precio);
+                cls_DAL.agregar_datos_estructura_parametros(ref parametros, 12, "@Precio", SqlDbType.Decimal, _precio);
                 cls_DAL.agregar_datos_estructura_parametros(ref parametros, 13, "@Puerta", SqlDbType.Int, _puerta);
                 cls_DAL.conectar(conexion, ref mensaje_error, ref numero_error);
                 cls_DAL.ejecuta_sqlcommand(conexion, sql, true, parametros, ref mensaje_error, ref numero_error);

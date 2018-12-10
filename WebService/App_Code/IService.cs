@@ -35,4 +35,20 @@ public interface IService
 
     void insertarEasyPay(string usuario, int numero, int codigo_seguridad, string contraseña, decimal monto);
 
+    [OperationContract]
+
+    void modificarTarjeta(int ID, string usuario, int numero, int mes_expiracion, int año_expiracion, int cvv, decimal monto, string emisor, string tipo);
+
+    [OperationContract]
+
+    void modificarEasyPay(int ID, string usuario, int numero, int codigo_seguridad, string contraseña, decimal monto);
+
+    [OperationContract]
+
+    void eliminarTarjeta(int ID);
+
+    [OperationContract]
+
+    void eliminarEasyPay(int ID);
+
 }

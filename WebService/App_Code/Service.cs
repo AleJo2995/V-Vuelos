@@ -19,27 +19,31 @@ public class Service : IService
 
     public DataSet cargarTarjeta(string usuario)
     {
-        SqlCommand cmd = new SqlCommand("usp_cargar_tarjetas", con);
-        cmd.Connection = con;
-        cmd.CommandType = CommandType.StoredProcedure;
-        cmd.Parameters.AddWithValue("@Usuario", usuario);
-        cmd.Parameters.Clear();
-        SqlDataAdapter da = new SqlDataAdapter(cmd);
+        SqlCommand mySqlCommand = con.CreateCommand();
+        mySqlCommand.CommandText = "usp_consulta_tarjeta";
+        mySqlCommand.CommandType = CommandType.StoredProcedure;
+        mySqlCommand.Parameters.Add("@Usuario", SqlDbType.VarChar).Value = usuario;
+
+        SqlDataAdapter SqlDataAdapter = new SqlDataAdapter();
+        SqlDataAdapter.SelectCommand = mySqlCommand;
         DataSet ds = new DataSet();
-        da.Fill(ds);
+        con.Open();
+        SqlDataAdapter.Fill(ds);
         return ds;
     }
 
     public DataSet cargarEasyPay(string usuario)
     {
-        SqlCommand cmd = new SqlCommand("usp_cargar_easypay", con);
-        cmd.Connection = con;
-        cmd.CommandType = CommandType.StoredProcedure;
-        cmd.Parameters.AddWithValue("@Usuario", usuario);
-        cmd.Parameters.Clear();
-        SqlDataAdapter da = new SqlDataAdapter(cmd);
+        SqlCommand mySqlCommand = con.CreateCommand();
+        mySqlCommand.CommandText = "usp_consulta_easypay";
+        mySqlCommand.CommandType = CommandType.StoredProcedure;
+        mySqlCommand.Parameters.Add("@Usuario", SqlDbType.VarChar).Value = usuario;
+
+        SqlDataAdapter SqlDataAdapter = new SqlDataAdapter();
+        SqlDataAdapter.SelectCommand = mySqlCommand;
         DataSet ds = new DataSet();
-        da.Fill(ds);
+        con.Open();
+        SqlDataAdapter.Fill(ds);
         return ds;
     }
 
@@ -64,12 +68,13 @@ public class Service : IService
         tarjeta.id = Convert.ToInt32(ds.Tables[0].Rows[0]["ID"]); 
         tarjeta.usuario = ds.Tables[0].Rows[0]["Usuario"].ToString(); 
         tarjeta.numero_tarjeta = Convert.ToInt32(ds.Tables[0].Rows[0]["Numero_Tarjeta"]); 
-        tarjeta.mes_expiracion = Convert.ToInt32(ds.Tables[0].Rows[0]["Mes_expiracion"]); 
-        tarjeta.año_expiracion = Convert.ToInt32(ds.Tables[0].Rows[0]["Año_expiracion"]); 
+        tarjeta.mes_expiracion = Convert.ToInt32(ds.Tables[0].Rows[0]["Mes_Expiracion"]); 
+        tarjeta.año_expiracion = Convert.ToInt32(ds.Tables[0].Rows[0]["Año_Expiracion"]); 
         tarjeta.cvv = Convert.ToInt32(ds.Tables[0].Rows[0]["CVV"]); ;
-        tarjeta.monto = Convert.ToDecimal(ds.Tables[0].Rows[0]["Monto"]); 
+        tarjeta.monto = Convert.ToDecimal(ds.Tables[0].Rows[0]["Monto"]);
+        tarjeta.tipo = ds.Tables[0].Rows[0]["Tipo"].ToString();
         tarjeta.emisor = ds.Tables[0].Rows[0]["Emisor"].ToString(); 
-        tarjeta.tipo = ds.Tables[0].Rows[0]["Tipo"].ToString(); 
+       
 
         return JsonConvert.SerializeObject(tarjeta);
     }
@@ -78,7 +83,7 @@ public class Service : IService
     {
 
         SqlCommand mySqlCommand = con.CreateCommand();
-        mySqlCommand.CommandText = "usp_info_tarjeta";
+        mySqlCommand.CommandText = "usp_info_easypay";
         mySqlCommand.CommandType = CommandType.StoredProcedure;
         mySqlCommand.Parameters.Add("@ID", SqlDbType.Int).Value = id;
 
@@ -92,10 +97,10 @@ public class Service : IService
 
         easypay.id = Convert.ToInt32(ds.Tables[0].Rows[0]["ID"]); 
         easypay.usuario = ds.Tables[0].Rows[0]["Usuario"].ToString();
-        easypay.numero_cuenta = Convert.ToInt32(ds.Tables[0].Rows[0]["Numero_cuenta"]); ;
-        easypay.codigo_seguridad = Convert.ToInt32(ds.Tables[0].Rows[0]["Codigo_seguridad"]); 
+        easypay.numero_cuenta = Convert.ToInt32(ds.Tables[0].Rows[0]["Numero_Cuenta"]); ;
+        easypay.codigo_seguridad = Convert.ToInt32(ds.Tables[0].Rows[0]["Codigo_Seguridad"]); 
         easypay.contraseña = ds.Tables[0].Rows[0]["Contraseña"].ToString();
-        easypay.monto = Convert.ToDecimal(ds.Tables[0].Rows[0]["Monto"]);
+        easypay.monto = Convert.ToDecimal(ds.Tables[0].Rows[0]["Fondo"]);
 
 
         return JsonConvert.SerializeObject(easypay);
@@ -104,17 +109,18 @@ public class Service : IService
     public void insertarTarjeta(string usuario, int numero, int mes_expiracion, int año_expiracion, int cvv, decimal monto, string emisor, string tipo)
     {
 
-        SqlCommand cmd = new SqlCommand("usp_insertar_tarjeta", con);
+        SqlCommand cmd = new SqlCommand("usp_inserta_tarjeta", con);
         cmd.CommandType = CommandType.StoredProcedure;
         con.Open();
         cmd.Parameters.AddWithValue("@Usuario", usuario);
-        cmd.Parameters.AddWithValue("@Numero", numero);
+        cmd.Parameters.AddWithValue("@Numero_Tarjeta", numero);
         cmd.Parameters.AddWithValue("@Mes_Expiracion", mes_expiracion);
         cmd.Parameters.AddWithValue("@Year_Expiracion", año_expiracion);
         cmd.Parameters.AddWithValue("@CVV", cvv);
         cmd.Parameters.AddWithValue("@Monto", monto);
-        cmd.Parameters.AddWithValue("@Emisor", emisor);
         cmd.Parameters.AddWithValue("@Tipo", tipo);
+        cmd.Parameters.AddWithValue("@Emisor", emisor);
+    
         cmd.ExecuteNonQuery();
 
  
@@ -122,17 +128,74 @@ public class Service : IService
 
     public void insertarEasyPay(string usuario, int numero, int codigo_seguridad, string contraseña, decimal monto)
     {
-        SqlCommand cmd = new SqlCommand("usp_insertar_easypay", con);
+        SqlCommand cmd = new SqlCommand("usp_inserta_easypay", con);
         cmd.CommandType = CommandType.StoredProcedure;
         con.Open();
         cmd.Parameters.AddWithValue("@Usuario", usuario);
-        cmd.Parameters.AddWithValue("@Numero", numero);
+        cmd.Parameters.AddWithValue("@Numero_Cuenta", numero);
         cmd.Parameters.AddWithValue("@Codigo_Seguridad", codigo_seguridad);
         cmd.Parameters.AddWithValue("@Password", contraseña);
-        cmd.Parameters.AddWithValue("@Monto", monto);
+        cmd.Parameters.AddWithValue("@Fondo", monto);
         cmd.ExecuteNonQuery();
 
     }
+
+    public void modificarTarjeta(int ID, string usuario, int numero, int mes_expiracion, int año_expiracion, int cvv, decimal monto, string emisor, string tipo)
+    {
+
+        SqlCommand cmd = new SqlCommand("usp_modifica_tarjeta", con);
+        cmd.CommandType = CommandType.StoredProcedure;
+        con.Open();
+        cmd.Parameters.AddWithValue("@ID", ID);
+        cmd.Parameters.AddWithValue("@Usuario", usuario);
+        cmd.Parameters.AddWithValue("@Numero_Tarjeta", numero);
+        cmd.Parameters.AddWithValue("@Mes_Expiracion", mes_expiracion);
+        cmd.Parameters.AddWithValue("@Year_Expiracion", año_expiracion);
+        cmd.Parameters.AddWithValue("@CVV", cvv);
+        cmd.Parameters.AddWithValue("@Monto", monto);
+        cmd.Parameters.AddWithValue("@Tipo", tipo);
+        cmd.Parameters.AddWithValue("@Emisor", emisor);
+
+        cmd.ExecuteNonQuery();
+
+
+    }
+
+    public void modificarEasyPay(int ID, string usuario, int numero, int codigo_seguridad, string contraseña, decimal monto)
+    {
+        SqlCommand cmd = new SqlCommand("usp_modifica_easypay", con);
+        cmd.CommandType = CommandType.StoredProcedure;
+        con.Open();
+        cmd.Parameters.AddWithValue("@ID", ID);
+        cmd.Parameters.AddWithValue("@Usuario", usuario);
+        cmd.Parameters.AddWithValue("@Numero_Cuenta", numero);
+        cmd.Parameters.AddWithValue("@Codigo_Seguridad", codigo_seguridad);
+        cmd.Parameters.AddWithValue("@Password", contraseña);
+        cmd.Parameters.AddWithValue("@Fondo", monto);
+        cmd.ExecuteNonQuery();
+
+    }
+
+    public void eliminarTarjeta(int ID)
+    {
+        SqlCommand cmd = new SqlCommand("usp_elimina_tarjeta", con);
+        cmd.CommandType = CommandType.StoredProcedure;
+        con.Open();
+        cmd.Parameters.AddWithValue("@ID", ID);
+        cmd.ExecuteNonQuery();
+
+    }
+
+    public void eliminarEasyPay(int ID)
+    {
+        SqlCommand cmd = new SqlCommand("usp_elimina_easypay", con);
+        cmd.CommandType = CommandType.StoredProcedure;
+        con.Open();
+        cmd.Parameters.AddWithValue("@ID", ID);
+        cmd.ExecuteNonQuery();
+
+    }
+
 
 
 }
