@@ -10,6 +10,7 @@
         <td>Código País:</td>
         <td>
             <asp:TextBox ID="txt_codigo_pais" runat="server"></asp:TextBox>
+			<asp:RequiredFieldValidator ID="txt_codigo_pais" runat="server" ControlToValidate="txt_codigo_pais" ErrorMessage="*" ForeColor="Red" SetFocusOnError="True">Este campo es requerido</asp:RequiredFieldValidator>
         </td>
     </tr>
     <tr>
@@ -20,6 +21,7 @@
         <td>Nombre:</td>
         <td>
             <asp:TextBox ID="txt_nombre" runat="server"></asp:TextBox>
+			<asp:RequiredFieldValidator ID="txt_nombre" runat="server" ControlToValidate="txt_nombre" ErrorMessage="*" ForeColor="Red" SetFocusOnError="True">Este campo es requerido</asp:RequiredFieldValidator>
         </td>
     </tr>
     <tr>
