@@ -138,6 +138,7 @@ span.crt {
   <div class="container-fuild" aria-required>
     
 
+        <asp:Login ID="Login1" runat="server" DisplayRememberMe="False" Width="954px" DestinationPageUrl="~/Default.aspx" >
       </asp:Login> 
 
       <div runat="server" id="captchaDiv" Visible="true">
